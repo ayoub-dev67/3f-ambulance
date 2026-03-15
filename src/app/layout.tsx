@@ -34,20 +34,26 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   themeColor: "#0057B8",
   openGraph: {
-    type: "website",
+    title: "3F Ambulance — Transport Médical Saint-Louis (68)",
+    description: "Ambulance, VSL et taxi conventionné à Saint-Louis. Transport médical 24h/24 aux Trois Frontières. Appelez le 06 33 81 40 47.",
+    url: "https://3f-ambulance.vercel.app",
+    siteName: "3F Ambulance",
     locale: "fr_FR",
-    siteName: SITE_CONFIG.name,
+    type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://3f-ambulance.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "3F Ambulance - Transport Médical Saint-Louis",
+        alt: "3F Ambulance — Transport Médical Saint-Louis Trois Frontières",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    title: "3F Ambulance — Transport Médical Saint-Louis (68)",
+    description: "Ambulance, VSL et taxi conventionné aux Trois Frontières. 24h/24. Tél : 06 33 81 40 47.",
+    images: ["https://3f-ambulance.vercel.app/og-image.jpg"],
   },
   icons: {
     icon: [
