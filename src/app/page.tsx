@@ -25,14 +25,9 @@ const HOME_SERVICES = [
     alt: "Ambulance 3F Ambulance — Transport médical Saint-Louis",
     icon: Ambulance,
     title: "Ambulance",
-    desc: "Transport allongé et semi-allongé avec surveillance médicale. Post-opératoire, transferts inter-hospitaliers entre Saint-Louis et Mulhouse, retours d\u2019hospitalisation. Brancard, oxygène, monitoring à bord.",
+    desc: "Transport allongé et semi-allongé avec surveillance médicale. Brancard, oxygène, monitoring à bord.",
     href: "/services#ambulance",
-    number: "01",
-    colSpan: "md:col-span-2 md:row-span-2",
-    padding: "md:p-10",
-    titleSize: "text-2xl md:text-3xl",
-    textSize: "text-lg",
-    imgHeight: "h-48 md:h-64",
+    isPhoto: true,
   },
   {
     image: "/images/vsl.jpg",
@@ -41,12 +36,7 @@ const HOME_SERVICES = [
     title: "VSL",
     desc: "Transport assis pour dialyse, chimio, consultations à Mulhouse ou Strasbourg. Confortable et climatisé.",
     href: "/services#vsl",
-    number: "02",
-    colSpan: "",
-    padding: "md:p-8",
-    titleSize: "text-xl",
-    textSize: "",
-    imgHeight: "h-40",
+    isPhoto: false,
   },
   {
     image: "/images/taxi-medical.jpg",
@@ -55,12 +45,7 @@ const HOME_SERVICES = [
     title: "Taxi Conventionné",
     desc: "Remboursé par la CPAM sur prescription médicale (volet 4 du cerfa). Tiers payant, pas d\u2019avance de frais.",
     href: "/services#taxi-conventionne",
-    number: "03",
-    colSpan: "",
-    padding: "md:p-8",
-    titleSize: "text-xl",
-    textSize: "",
-    imgHeight: "h-40",
+    isPhoto: false,
   },
 ];
 
@@ -136,18 +121,18 @@ export default function Home() {
         <div className="container-custom">
           <RevealOnScroll><SectionHeading title="Nos Services de Transport Médical" surtitre="NOS SERVICES" /></RevealOnScroll>
           <RevealOnScroll>
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-3">
               {HOME_SERVICES.map((s) => (
-                <div key={s.title} className={`group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${s.colSpan}`}>
-                  <div className={`relative ${s.imgHeight} w-full`}>
-                    <Image src={s.image} alt={s.alt} fill className="object-cover transition-transform duration-300 group-hover:scale-105" quality={75} />
+                <div key={s.title} className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className={`relative h-44 w-full ${s.isPhoto ? "" : "bg-[#F0F6FF] p-2"}`}>
+                    <Image src={s.image} alt={s.alt} fill className={`${s.isPhoto ? "object-cover" : "object-contain"} transition-transform duration-300 group-hover:scale-105`} quality={75} />
                   </div>
-                  <div className={`p-5 ${s.padding}`}>
+                  <div className="p-6">
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary-light text-primary">
                       <s.icon className="h-5 w-5" aria-hidden="true" />
                     </div>
-                    <h3 className={`mb-3 font-heading font-bold text-dark ${s.titleSize}`}>{s.title}</h3>
-                    <p className={`mb-6 text-grey-600 leading-relaxed ${s.textSize}`}>{s.desc}</p>
+                    <h3 className="mb-3 font-heading text-xl font-bold text-dark">{s.title}</h3>
+                    <p className="mb-6 text-grey-600 leading-relaxed">{s.desc}</p>
                     <Link href={s.href} className="inline-flex items-center gap-1.5 font-medium text-primary transition-colors hover:text-primary-dark">
                       En savoir plus <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                     </Link>

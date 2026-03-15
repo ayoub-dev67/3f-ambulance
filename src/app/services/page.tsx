@@ -24,9 +24,10 @@ interface ServiceSectionProps {
   links?: { label: string; href: string }[];
   reverse?: boolean;
   bgAlt?: boolean;
+  isPhoto?: boolean;
 }
 
-function ServiceSection({ id, icon, title, description, situations, image, imageAlt, links, reverse, bgAlt }: ServiceSectionProps) {
+function ServiceSection({ id, icon, title, description, situations, image, imageAlt, links, reverse, bgAlt, isPhoto = true }: ServiceSectionProps) {
   return (
     <section id={id} className={`section-padding scroll-mt-24 ${bgAlt ? "bg-primary-50" : "bg-white"}`}>
       <div className="container-custom">
@@ -62,8 +63,8 @@ function ServiceSection({ id, icon, title, description, situations, image, image
               </a>
             </div>
             <div className={`${reverse ? "md:order-1" : ""}`}>
-              <div className="relative h-[300px] md:h-[350px] overflow-hidden rounded-2xl shadow-lg">
-                <Image src={image} alt={imageAlt} fill className="object-cover" quality={75} />
+              <div className={`relative h-[300px] md:h-[350px] overflow-hidden rounded-2xl shadow-lg ${isPhoto ? "" : "bg-[#F0F6FF] p-4"}`}>
+                <Image src={image} alt={imageAlt} fill className={isPhoto ? "object-cover" : "object-contain"} quality={75} />
               </div>
             </div>
           </div>
@@ -128,6 +129,7 @@ export default function ServicesPage() {
         ]}
         reverse
         bgAlt
+        isPhoto={false}
       />
       <ServiceSection
         id="taxi-conventionne"
@@ -144,6 +146,7 @@ export default function ServicesPage() {
           "Patients en ALD qui ont des consultations régulières (prise en charge 100 %)",
           "Transport longue distance vers Strasbourg sur prescription médicale",
         ]}
+        isPhoto={false}
       />
       <ServiceSection
         id="longue-distance"
