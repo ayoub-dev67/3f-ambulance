@@ -2,26 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply text-grey-800 bg-white font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold text-dark;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .section-padding {
+    @apply px-4 py-12 md:px-8 md:py-20 lg:px-16;
+  }
+
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ECG heartbeat line animation for hero */
+@keyframes ecg-dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+.ecg-line {
+  stroke-dasharray: 200 800;
+  animation: ecg-dash 8s linear infinite;
+}
+
+/* Ring pulse animation for CTA buttons and floating button */
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.ring-pulse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: inherit;
+  animation: ring-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  z-index: -1;
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children animations — no stagger on mobile, stagger on desktop */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.stagger-children.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .reveal {
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .stagger-children > * {
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .stagger-children.revealed > *:nth-child(1) { transition-delay: 0ms; }
+  .stagger-children.revealed > *:nth-child(2) { transition-delay: 100ms; }
+  .stagger-children.revealed > *:nth-child(3) { transition-delay: 200ms; }
+  .stagger-children.revealed > *:nth-child(4) { transition-delay: 300ms; }
+  .stagger-children.revealed > *:nth-child(5) { transition-delay: 400ms; }
+  .stagger-children.revealed > *:nth-child(6) { transition-delay: 500ms; }
+}
+
+/* Skip to content */
+.skip-to-content {
+  @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-primary px-6 py-3 font-bold text-white transition-transform focus:translate-y-0;
+}
+
+/* Global focus-visible styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #0B60B0;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Dot pattern for CTA banner */
+.dot-pattern {
+  background-image: radial-gradient(circle, white 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Footer top gradient separator */
+.footer-separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #0B60B0, transparent);
 }
