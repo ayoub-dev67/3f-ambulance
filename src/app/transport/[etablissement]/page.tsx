@@ -15,7 +15,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const hospital = hospitals.find((h) => h.slug === params.etablissement);
   if (!hospital) return {};
-  const url = `${SITE_CONFIG.domain}/transport-${hospital.slug}`;
+  const url = `${SITE_CONFIG.domain}/transport/${hospital.slug}`;
   return {
     title: hospital.metaTitle,
     description: hospital.metaDescription,

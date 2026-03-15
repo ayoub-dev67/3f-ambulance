@@ -74,7 +74,7 @@ export default function CityPageTemplate({ city }: CityPageTemplateProps) {
           <RevealOnScroll stagger>
             <div className="space-y-4">
               {nearbyHospitals.map((h) => (
-                <Link key={h.slug} href={`/transport-${h.slug}`} className="flex items-start gap-5 rounded-2xl border border-grey-100 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 group md:p-8">
+                <Link key={h.slug} href={`/transport/${h.slug}`} className="flex items-start gap-5 rounded-2xl border border-grey-100 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 group md:p-8">
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-light text-primary"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
                   <div className="flex-1">
                     <h3 className="font-heading text-lg font-bold text-dark group-hover:text-primary transition-colors">{h.name}</h3>
@@ -132,7 +132,7 @@ export default function CityPageTemplate({ city }: CityPageTemplateProps) {
             <SectionHeading title="Communes à Proximité" surtitre="MAILLAGE LOCAL" />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {nearbyCities.map((c) => (
-                <Link key={c.slug} href={`/ambulance-${c.slug}`} className="rounded-2xl border border-grey-100 bg-white p-6 text-center transition-all hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 group">
+                <Link key={c.slug} href={`/ambulance/${c.slug}`} className="rounded-2xl border border-grey-100 bg-white p-6 text-center transition-all hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5 group">
                   <h3 className="font-heading font-bold text-dark group-hover:text-primary transition-colors">{c.name}</h3>
                   <p className="mt-1 text-sm text-grey-600">{c.distance}</p>
                 </Link>
@@ -149,7 +149,7 @@ export default function CityPageTemplate({ city }: CityPageTemplateProps) {
         "@type": "LocalBusiness",
         name: `${SITE_CONFIG.fullName} ${city.name}`,
         telephone: SITE_CONFIG.phoneHref.replace("tel:", ""),
-        url: `${SITE_CONFIG.domain}/ambulance-${city.slug}`,
+        url: `${SITE_CONFIG.domain}/ambulance/${city.slug}`,
         address: { "@type": "PostalAddress", addressLocality: "Saint-Louis", addressRegion: "Haut-Rhin", postalCode: "68300", addressCountry: "FR" },
         areaServed: { "@type": "City", name: city.name },
         serviceType: ["Ambulance", "VSL", "Taxi Conventionné"],

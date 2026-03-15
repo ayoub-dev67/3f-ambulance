@@ -15,7 +15,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const city = cities.find((c) => c.slug === params.ville);
   if (!city) return {};
-  const url = `${SITE_CONFIG.domain}/ambulance-${city.slug}`;
+  const url = `${SITE_CONFIG.domain}/ambulance/${city.slug}`;
   return {
     title: city.metaTitle,
     description: city.metaDescription,
