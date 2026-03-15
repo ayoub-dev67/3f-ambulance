@@ -124,9 +124,15 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-3">
               {HOME_SERVICES.map((s) => (
                 <div key={s.title} className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                  <div className={`relative h-44 w-full ${s.isPhoto ? "" : "bg-[#F0F6FF] p-2"}`}>
-                    <Image src={s.image} alt={s.alt} fill className={`${s.isPhoto ? "object-cover" : "object-contain"} transition-transform duration-300 group-hover:scale-105`} quality={75} />
-                  </div>
+                  {s.isPhoto ? (
+                    <div className="relative h-48 w-full">
+                      <Image src={s.image} alt={s.alt} fill className="object-cover transition-transform duration-300 group-hover:scale-105" quality={75} />
+                    </div>
+                  ) : (
+                    <div className="w-full bg-[#F0F6FF]">
+                      <Image src={s.image} alt={s.alt} width={600} height={400} className="w-full h-auto" quality={75} />
+                    </div>
+                  )}
                   <div className="p-6">
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary-light text-primary">
                       <s.icon className="h-5 w-5" aria-hidden="true" />

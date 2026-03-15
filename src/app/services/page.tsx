@@ -63,9 +63,15 @@ function ServiceSection({ id, icon, title, description, situations, image, image
               </a>
             </div>
             <div className={`${reverse ? "md:order-1" : ""}`}>
-              <div className={`relative h-[300px] md:h-[350px] overflow-hidden rounded-2xl shadow-lg ${isPhoto ? "" : "bg-[#F0F6FF] p-4"}`}>
-                <Image src={image} alt={imageAlt} fill className={isPhoto ? "object-cover" : "object-contain"} quality={75} />
-              </div>
+              {isPhoto ? (
+                <div className="relative h-[300px] md:h-[350px] overflow-hidden rounded-2xl shadow-lg">
+                  <Image src={image} alt={imageAlt} fill className="object-cover" quality={75} />
+                </div>
+              ) : (
+                <div className="overflow-hidden rounded-2xl shadow-lg bg-[#F0F6FF]">
+                  <Image src={image} alt={imageAlt} width={600} height={400} className="w-full h-auto" quality={75} />
+                </div>
+              )}
             </div>
           </div>
         </RevealOnScroll>
