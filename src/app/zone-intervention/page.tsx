@@ -24,12 +24,11 @@ interface ZoneSectorProps {
 
 function ZoneSector({ title, imageSlug, communes }: ZoneSectorProps) {
   const cityImage = cities.find((c) => c.slug === imageSlug);
+  const imageSrc = cityImage?.image ?? `/images/villes/${imageSlug}.jpg`;
   return (
     <div className="overflow-hidden rounded-2xl border border-grey-100 bg-white transition-all hover:shadow-lg">
       <div className="relative h-48">
-        {cityImage && (
-          <Image src={cityImage.image} alt={`Secteur ${title} — 3F Ambulance`} fill className="object-cover" quality={75} />
-        )}
+        <Image src={imageSrc} alt={`Secteur ${title} — 3F Ambulance`} fill className="object-cover" quality={75} />
         <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
         <span className="absolute bottom-3 left-4 font-heading text-xl font-bold text-white">{title}</span>
       </div>
