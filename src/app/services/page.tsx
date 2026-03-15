@@ -8,7 +8,7 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { ServiceJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
-  title: "Services Transport Médical Saint-Louis (68) | Ambulance VSL Taxi — 3F Ambulance",
+  title: "Services Transport Médical | 3F Ambulance Saint-Louis",
   description: "Découvrez nos services de transport médical à Saint-Louis (68) : ambulance, VSL, taxi conventionné, longue distance et transfrontalier. 3F Ambulance — 06 33 81 40 47.",
   path: "/services",
 });

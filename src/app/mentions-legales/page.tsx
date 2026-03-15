@@ -2,8 +2,8 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { generatePageMetadata } from "@/lib/metadata";
 
 export const metadata = generatePageMetadata({
-  title: "Mentions Légales — 3F Ambulance",
-  description: "Mentions légales du site 3f-ambulance.fr. Informations sur l'éditeur, l'hébergeur et la politique de confidentialité.",
+  title: "Mentions Légales | 3F Ambulance Saint-Louis (68)",
+  description: "Mentions légales de 3F Ambulance. Raison sociale, siège, hébergeur, politique de confidentialité et gestion des cookies. Transport médical Saint-Louis (68).",
   path: "/mentions-legales",
   noindex: true,
 });

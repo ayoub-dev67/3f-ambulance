@@ -9,7 +9,7 @@ import CTABanner from "@/components/ui/CTABanner";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 
 export const metadata = generatePageMetadata({
-  title: "Zone d'Intervention Ambulance Saint-Louis (68) | Trois Frontières — 3F Ambulance",
+  title: "Zone d'Intervention | 3F Ambulance Trois Frontières",
   description: "Découvrez la zone d'intervention de 3F Ambulance : Saint-Louis, Huningue, Blotzheim, Mulhouse et toutes les Trois Frontières. Transport longue distance et transfrontalier.",
   path: "/zone-intervention",
 });

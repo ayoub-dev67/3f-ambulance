@@ -8,6 +8,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/ui/CTABanner";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { MedicalBusinessJsonLd } from "@/components/seo/JsonLd";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 interface HospitalPageTemplateProps {
   hospital: HospitalData;
@@ -143,6 +144,11 @@ export default function HospitalPageTemplate({ hospital }: HospitalPageTemplateP
 
       <CTABanner title={`Transport vers ${hospital.name} ?`} subtitle="On connaît cet établissement par cœur. Appelez-nous pour organiser votre transport." />
       <MedicalBusinessJsonLd name={hospital.name} city={hospital.city} />
+      <BreadcrumbJsonLd items={[
+        { name: "Accueil", url: SITE_CONFIG.domain },
+        { name: "Services", url: `${SITE_CONFIG.domain}/services` },
+        { name: hospital.name, url: `${SITE_CONFIG.domain}/transport/${hospital.slug}` },
+      ]} />
     </>
   );
 }

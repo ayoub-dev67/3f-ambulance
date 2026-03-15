@@ -19,7 +19,13 @@ export function EmergencyServiceJsonLd() {
       { "@type": "City", name: "Huningue" },
       { "@type": "City", name: "Hésingue" },
       { "@type": "City", name: "Blotzheim" },
+      { "@type": "City", name: "Bartenheim" },
+      { "@type": "City", name: "Village-Neuf" },
+      { "@type": "City", name: "Kembs" },
+      { "@type": "City", name: "Sierentz" },
+      { "@type": "City", name: "Rixheim" },
       { "@type": "City", name: "Mulhouse" },
+      { "@type": "City", name: "Habsheim" },
     ],
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",

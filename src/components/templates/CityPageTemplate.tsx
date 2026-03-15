@@ -8,6 +8,7 @@ import { cities } from "@/data/cities";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/ui/CTABanner";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd";
 
 interface CityPageTemplateProps {
   city: CityData;
@@ -189,6 +190,11 @@ export default function CityPageTemplate({ city }: CityPageTemplateProps) {
         serviceType: ["Ambulance", "VSL", "Taxi Conventionné"],
         openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], opens: "00:00", closes: "23:59" },
       }) }} />
+      <BreadcrumbJsonLd items={[
+        { name: "Accueil", url: SITE_CONFIG.domain },
+        { name: "Zone d\u2019Intervention", url: `${SITE_CONFIG.domain}/zone-intervention` },
+        { name: city.name, url: `${SITE_CONFIG.domain}/ambulance/${city.slug}` },
+      ]} />
     </>
   );
 }

@@ -25,7 +25,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "3F Ambulance Saint-Louis (68) | Transport Médical 24h/24 Trois Frontières",
+    default: "3F Ambulance Saint-Louis (68) | Transport Médical 24h/24",
     template: "%s | 3F Ambulance",
   },
   description:

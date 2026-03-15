@@ -38,10 +38,10 @@ export default function CookieBanner() {
           <Link href="/mentions-legales" className="text-primary underline">En savoir plus</Link>
         </p>
         <div className="flex gap-3 flex-shrink-0">
-          <button onClick={() => handleChoice("refused")} className="rounded-full bg-grey-100 px-6 py-2 text-sm font-medium text-grey-600 transition hover:bg-gray-200">
+          <button type="button" onClick={() => handleChoice("refused")} className="rounded-full bg-grey-100 px-6 py-2 text-sm font-medium text-grey-600 transition hover:bg-gray-200">
             Refuser
           </button>
-          <button onClick={() => handleChoice("accepted")} className="rounded-full bg-primary px-6 py-2 text-sm font-medium text-white transition hover:bg-primary-dark">
+          <button type="button" onClick={() => handleChoice("accepted")} className="rounded-full bg-primary px-6 py-2 text-sm font-medium text-white transition hover:bg-primary-dark">
             Accepter
           </button>
         </div>

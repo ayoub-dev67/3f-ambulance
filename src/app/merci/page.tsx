@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Merci — 3F Ambulance",
+  description: "Votre demande de transport a bien été envoyée. 3F Ambulance vous recontacte rapidement. Urgences : 06 33 81 40 47.",
   robots: { index: false, follow: false },
 };
 
