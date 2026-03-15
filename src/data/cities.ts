@@ -4,6 +4,7 @@ export const cities: CityData[] = [
   {
     slug: "huningue",
     name: "Huningue",
+    image: "/images/villes/huningue.jpg",
     description: "Ambulance à Huningue, ville frontalière sur le Rhin à 3 km de Saint-Louis. Accès direct vers Bâle par le pont.",
     distance: "3 km de Saint-Louis",
     metaTitle: "Ambulance Huningue (68) | Transport Médical 24h/24 — 3F Ambulance",
@@ -17,6 +18,7 @@ export const cities: CityData[] = [
   {
     slug: "hesingue",
     name: "Hésingue",
+    image: "/images/villes/hesingue.jpg",
     description: "Ambulance et VSL à Hésingue (68), commune résidentielle à 5 km de Saint-Louis entre Blotzheim et Hégenheim.",
     distance: "5 km de Saint-Louis",
     metaTitle: "Ambulance Hésingue (68) | Transport Médical VSL — 3F Ambulance",
@@ -30,6 +32,7 @@ export const cities: CityData[] = [
   {
     slug: "blotzheim",
     name: "Blotzheim",
+    image: "/images/villes/blotzheim.jpg",
     description: "Ambulance à Blotzheim (68), à 5 minutes de l'EuroAirport Bâle-Mulhouse. Rapatriements sanitaires et transport quotidien.",
     distance: "6 km de Saint-Louis",
     metaTitle: "Ambulance Blotzheim (68) | Transport Médical EuroAirport — 3F Ambulance",
@@ -43,6 +46,7 @@ export const cities: CityData[] = [
   {
     slug: "bartenheim",
     name: "Bartenheim",
+    image: "/images/villes/bartenheim.jpg",
     description: "Ambulance à Bartenheim (68), sur l'axe Saint-Louis — Mulhouse. Transport médical 24h/24.",
     distance: "8 km de Saint-Louis",
     metaTitle: "Ambulance Bartenheim (68) | Transport Médical 24h/24 — 3F Ambulance",
@@ -56,6 +60,7 @@ export const cities: CityData[] = [
   {
     slug: "village-neuf",
     name: "Village-Neuf",
+    image: "/images/villes/village-neuf.jpg",
     description: "Ambulance à Village-Neuf (68), commune voisine de Saint-Louis au bord du Rhin. Intervention en 2 minutes.",
     distance: "2 km de Saint-Louis",
     metaTitle: "Ambulance Village-Neuf (68) | Transport Médical — 3F Ambulance",
@@ -69,6 +74,7 @@ export const cities: CityData[] = [
   {
     slug: "kembs",
     name: "Kembs",
+    image: "/images/villes/kembs.jpg",
     description: "Ambulance à Kembs (68), sur l'axe Saint-Louis — Mulhouse le long du canal du Rhône au Rhin.",
     distance: "10 km de Saint-Louis",
     metaTitle: "Ambulance Kembs (68) | Transport Médical VSL — 3F Ambulance",
@@ -82,6 +88,7 @@ export const cities: CityData[] = [
   {
     slug: "sierentz",
     name: "Sierentz",
+    image: "/images/villes/sierentz.jpg",
     description: "Ambulance à Sierentz (68), bourg-centre du Sundgau avec centre de soins de suite et de réadaptation (SSR).",
     distance: "12 km de Saint-Louis",
     metaTitle: "Ambulance Sierentz (68) | Transport Médical Haut-Rhin — 3F Ambulance",
@@ -95,6 +102,7 @@ export const cities: CityData[] = [
   {
     slug: "rixheim",
     name: "Rixheim",
+    image: "/images/villes/rixheim.jpg",
     description: "Ambulance à Rixheim (68), entre Saint-Louis et Mulhouse. 13 000 habitants, proche du centre hospitalier.",
     distance: "20 km de Saint-Louis",
     metaTitle: "Ambulance Rixheim (68) | Transport Médical Mulhouse — 3F Ambulance",
@@ -108,6 +116,7 @@ export const cities: CityData[] = [
   {
     slug: "mulhouse",
     name: "Mulhouse",
+    image: "/images/villes/mulhouse.jpg",
     description: "Transport ambulance Mulhouse (68). Liaison quotidienne Saint-Louis ↔ Mulhouse. 3 hôpitaux : Émile Muller, Diaconat-Roosevelt, Diaconat-Fonderie.",
     distance: "30 km — 30 min de Saint-Louis",
     metaTitle: "Ambulance Mulhouse (68) | Transport Médical Saint-Louis — 3F Ambulance",
@@ -121,6 +130,7 @@ export const cities: CityData[] = [
   {
     slug: "habsheim",
     name: "Habsheim",
+    image: "/images/villes/habsheim.jpg",
     description: "Ambulance à Habsheim (68), commune résidentielle au sud de Mulhouse. Transport vers les hôpitaux mulhousiens.",
     distance: "22 km de Saint-Louis",
     metaTitle: "Ambulance Habsheim (68) | Transport Médical Sud Alsace — 3F Ambulance",

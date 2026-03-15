@@ -59,5 +59,6 @@ export const NAV_LINKS = [
   { label: "Zone d'intervention", href: "/zone-intervention" },
   { label: "À propos", href: "/a-propos" },
   { label: "FAQ", href: "/faq" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ] as const;

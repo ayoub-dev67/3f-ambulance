@@ -4,6 +4,7 @@ export const hospitals: HospitalData[] = [
   {
     slug: "hopital-saint-louis",
     name: "Hôpital de Saint-Louis (GHRMSA)",
+    image: "/images/hopitaux/hopital-saint-louis.jpg",
     city: "Saint-Louis",
     specialties: ["Urgences 24h/24", "Dialyse (16 postes)", "Médecine interne", "Chirurgie", "Radiologie (IRM, scanner)", "Maternité"],
     metaTitle: "Transport Hôpital Saint-Louis (68) | Ambulance VSL — 3F Ambulance",
@@ -17,6 +18,7 @@ export const hospitals: HospitalData[] = [
   {
     slug: "hopital-emile-muller-mulhouse",
     name: "Hôpital Émile Muller (GHRMSA Mulhouse)",
+    image: "/images/hopitaux/hopital-emile-muller-mulhouse.jpg",
     city: "Mulhouse",
     specialties: ["Urgences 24h/24", "Cardiologie", "Oncologie", "Neurologie", "Réanimation", "Chirurgie", "Dialyse"],
     metaTitle: "Transport Hôpital Émile Muller Mulhouse | Ambulance — 3F Ambulance",
@@ -30,6 +32,7 @@ export const hospitals: HospitalData[] = [
   {
     slug: "clinique-diaconat-mulhouse",
     name: "Clinique Diaconat-Roosevelt",
+    image: "/images/hopitaux/clinique-diaconat-mulhouse.jpg",
     city: "Mulhouse",
     specialties: ["Chirurgie", "Maternité", "Cardiologie interventionnelle", "Orthopédie", "Ophtalmologie", "Gastro-entérologie"],
     metaTitle: "Transport Clinique Diaconat Mulhouse | Ambulance — 3F Ambulance",
@@ -43,6 +46,7 @@ export const hospitals: HospitalData[] = [
   {
     slug: "hopital-strasbourg",
     name: "Hôpitaux Universitaires de Strasbourg (HUS)",
+    image: "/images/hopitaux/hopital-strasbourg.jpg",
     city: "Strasbourg",
     specialties: ["CHU de référence", "Neurochirurgie", "Transplantation", "Cardiologie interventionnelle", "Oncologie (ICANS)", "Pédiatrie spécialisée"],
     metaTitle: "Transport Hôpital Strasbourg depuis Saint-Louis | Ambulance — 3F Ambulance",
@@ -56,6 +60,7 @@ export const hospitals: HospitalData[] = [
   {
     slug: "euroairport-bale-mulhouse",
     name: "EuroAirport Bâle-Mulhouse-Freiburg",
+    image: "/images/hopitaux/euroairport-bale-mulhouse.jpg",
     city: "Saint-Louis / Blotzheim",
     specialties: ["Rapatriement sanitaire", "Transport aéroportuaire", "Assistance médicale voyage", "Transfert piste"],
     metaTitle: "Transport Ambulance EuroAirport Bâle-Mulhouse | 3F Ambulance",

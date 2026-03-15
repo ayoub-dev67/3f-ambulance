@@ -47,9 +47,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
                 opacity: isOpen ? 1 : 0,
               }}
             >
-              <p className="px-6 pb-5 text-grey-600 leading-relaxed md:px-8 md:text-lg">
-                {item.answer}
-              </p>
+              <p className="px-6 pb-5 text-grey-600 leading-relaxed md:px-8 md:text-lg [&_a]:text-primary [&_a]:font-medium [&_a]:underline hover:[&_a]:text-primary-dark" dangerouslySetInnerHTML={{ __html: item.answer }} />
             </div>
           </div>
         );

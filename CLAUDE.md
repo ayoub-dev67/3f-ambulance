@@ -49,10 +49,10 @@ Thème : **BLEU et BLANC** médical, propre, rassurant, professionnel.
 ### Palette de couleurs
 
 ```
---primary:         #0B60B0   (Bleu médical — headers, boutons principaux, liens)
---primary-dark:    #084B8A   (Bleu foncé — hover, footer, hero overlay)
---primary-light:   #E3F2FD   (Bleu très clair — backgrounds sections alternées)
---primary-50:      #F0F7FF   (Bleu ultra-léger — subtle backgrounds)
+--primary:         #0057B8   (Bleu Étoile de Vie — headers, boutons principaux, liens)
+--primary-dark:    #003DA5   (Bleu Assurance Maladie — hover, footer, hero overlay)
+--primary-light:   #E8F1FB   (Bleu très clair — backgrounds sections alternées)
+--primary-50:      #F0F6FF   (Bleu ultra-léger — subtle backgrounds)
 --accent:          #E53E3E   (Rouge urgence — bouton appel, CTA urgents)
 --accent-hover:    #C53030   (Rouge foncé — hover sur CTA)
 --success:         #38A169   (Vert — badges de confiance, validations)
@@ -96,7 +96,7 @@ Le hero a un overlay bleu foncé semi-transparent sur un fond dégradé.
 
 **Sections :**
 1. **Hero** — Grande section pleine largeur
-   - Background : dégradé bleu foncé (#084B8A → #0B60B0) avec motif ECG subtil en SVG
+   - Background : dégradé bleu foncé (#003DA5 → #0057B8) avec motif ECG subtil en SVG
    - Titre H1 : "Votre Ambulance à Saint-Louis" (blanc, Poppins, très grand)
    - Sous-titre : "Transport médical professionnel aux Trois Frontières — 24h/24, 7j/7"
    - Bouton principal : "Appelez maintenant — 06 33 81 40 47" (rouge, grand, icône téléphone, animation pulse légère)
@@ -132,7 +132,7 @@ Le hero a un overlay bleu foncé semi-transparent sur un fond dégradé.
    - Mention "Longue distance : corridor Strasbourg ↔ Saint-Louis"
    - Bouton "Voir toutes les communes" → /zone-intervention
 
-6. **CTA Final** — Bandeau fond bleu foncé (#084B8A)
+6. **CTA Final** — Bandeau fond bleu foncé (#003DA5)
    - "Besoin d'un transport médical ?"
    - "Appelez 3F Ambulance — nous intervenons 24h/24"
    - Grand bouton rouge : "06 33 81 40 47"

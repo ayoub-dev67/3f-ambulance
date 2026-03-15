@@ -11,7 +11,7 @@ export default function CTABanner({
   subtitle = "Appelez 3F Ambulance — nous intervenons 24h/24, 7j/7 sur Saint-Louis et les Trois Frontières.",
 }: CTABannerProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#041E42] to-[#0B60B0] py-16 md:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-r from-[#002B5C] to-[#0057B8] py-16 md:py-20">
       {/* Dot pattern */}
       <div className="absolute inset-0 opacity-[0.04] dot-pattern" />
       {/* Decorative cross */}

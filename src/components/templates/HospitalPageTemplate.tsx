@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { Ambulance, Car, CarTaxiFront, Phone, FileText, PhoneCall, HeartHandshake, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Phone, FileText, PhoneCall, HeartHandshake, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { HospitalData } from "@/lib/types";
+import { hospitals } from "@/data/hospitals";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/ui/CTABanner";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import { MedicalBusinessJsonLd } from "@/components/seo/JsonLd";
 
 interface HospitalPageTemplateProps {
@@ -13,30 +14,54 @@ interface HospitalPageTemplateProps {
 }
 
 export default function HospitalPageTemplate({ hospital }: HospitalPageTemplateProps) {
+  const otherHospitals = hospitals.filter((h) => h.slug !== hospital.slug);
+
   return (
     <>
-      <Breadcrumb items={[
-        { label: "Services", href: "/services" },
-        { label: hospital.name },
-      ]} />
-
-      {/* Hero */}
-      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#041E42] via-[#0B60B0] to-[#084B8A] md:min-h-[400px]">
-        <div className="container-custom w-full py-20 text-center md:py-28">
-          <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200 backdrop-blur-sm">Transport médical</span>
-          <h1 className="mx-auto max-w-4xl font-heading text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">Transport vers {hospital.name}</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl text-blue-100/80 leading-relaxed">{hospital.content.intro}</p>
-          <div className="mt-6 flex items-center justify-center gap-2 text-white/80"><MapPin className="h-4 w-4" aria-hidden="true" /><span>{hospital.city}</span></div>
+      {/* Hero with image */}
+      <section className="relative h-[250px] md:h-[400px]">
+        <Image
+          src={hospital.image}
+          alt={`${hospital.name} — Transport médical 3F Ambulance`}
+          fill
+          className="object-cover"
+          quality={75}
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#002B5C]/90 via-[#002B5C]/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+          <div className="container-custom">
+            <nav className="mb-3 text-sm text-white/70" aria-label="Fil d'Ariane">
+              <Link href="/" className="hover:text-white transition-colors">Accueil</Link>
+              <span className="mx-2">/</span>
+              <Link href="/services" className="hover:text-white transition-colors">Services</Link>
+              <span className="mx-2">/</span>
+              <span className="text-white">{hospital.name}</span>
+            </nav>
+            <h1 className="font-heading text-3xl font-bold text-white md:text-4xl lg:text-5xl">Transport vers {hospital.name}</h1>
+            <span className="mt-3 inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">{hospital.city}</span>
+          </div>
         </div>
       </section>
 
-      {/* Specialties badges */}
-      <section className="bg-white py-10 shadow-sm">
+      {/* Intro */}
+      <section className="bg-white section-padding">
+        <div className="container-custom max-w-4xl">
+          <RevealOnScroll>
+            <div className="mx-auto max-w-3xl text-lg text-grey-600 leading-relaxed">
+              <p>{hospital.content.intro}</p>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* Specialties */}
+      <section className="bg-primary-50 py-10">
         <div className="container-custom">
           <RevealOnScroll>
             <div className="flex flex-wrap items-center justify-center gap-2">
               {hospital.specialties.map((s) => (
-                <span key={s} className="rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-primary">{s}</span>
+                <span key={s} className="rounded-full bg-blue-50 border border-blue-200 px-3 py-1.5 text-sm font-medium text-primary">{s}</span>
               ))}
             </div>
           </RevealOnScroll>
@@ -44,7 +69,7 @@ export default function HospitalPageTemplate({ hospital }: HospitalPageTemplateP
       </section>
 
       {/* Transport info */}
-      <section className="bg-primary-50 section-padding">
+      <section className="bg-white section-padding">
         <div className="container-custom max-w-4xl">
           <RevealOnScroll>
             <SectionHeading title={`Transport vers ${hospital.name}`} surtitre="INFORMATIONS" />
@@ -56,52 +81,29 @@ export default function HospitalPageTemplate({ hospital }: HospitalPageTemplateP
         </div>
       </section>
 
-      {/* Transport types */}
-      <section className="bg-white section-padding">
-        <div className="container-custom">
-          <RevealOnScroll><SectionHeading title="Types de Transport Disponibles" surtitre="NOS VÉHICULES" /></RevealOnScroll>
-          <RevealOnScroll stagger>
-            <div className="grid gap-8 md:grid-cols-3">
-              {[
-                { icon: Ambulance, title: "Ambulance", desc: `Transport médicalisé allongé ou semi-allongé vers ${hospital.name}. Pour les patients nécessitant une surveillance médicale pendant le trajet.`, href: "/services#ambulance", num: "01" },
-                { icon: Car, title: "VSL", desc: `Transport assis en Véhicule Sanitaire Léger vers ${hospital.name}. Idéal pour les consultations et examens programmés.`, href: "/services#vsl", num: "02" },
-                { icon: CarTaxiFront, title: "Taxi Conventionné", desc: `Taxi conventionné CPAM pour vos déplacements vers ${hospital.name}. Prise en charge Assurance Maladie sur prescription.`, href: "/services#taxi-conventionne", num: "03" },
-              ].map((t) => (
-                <Link key={t.title} href={t.href} className="group relative overflow-hidden rounded-2xl border border-grey-100 border-l-4 border-l-primary bg-white p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-l-accent">
-                  <span className="absolute top-4 right-4 hidden font-heading text-6xl font-black text-grey-100 select-none md:block" aria-hidden="true">{t.num}</span>
-                  <div className="relative mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-primary group-hover:from-primary group-hover:to-primary-dark group-hover:text-white transition-colors"><t.icon className="h-7 w-7" aria-hidden="true" /></div>
-                  <h3 className="relative mb-3 font-heading text-xl font-semibold text-dark">{t.title}</h3>
-                  <p className="relative text-grey-600 leading-relaxed">{t.desc}</p>
-                </Link>
-              ))}
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      {/* Booking steps — connected circles */}
+      {/* Booking steps — circles with connecting line */}
       <section className="bg-primary-50 section-padding">
         <div className="container-custom max-w-4xl">
           <RevealOnScroll><SectionHeading title="Comment Réserver Votre Transport" surtitre="RÉSERVATION" /></RevealOnScroll>
           <RevealOnScroll>
-            <div className="relative">
-              {/* Connection line */}
-              <div className="absolute left-1/2 top-8 hidden h-0.5 w-[60%] -translate-x-1/2 bg-primary/20 md:block" aria-hidden="true" />
-              <div className="grid gap-8 md:grid-cols-3">
-                {[
-                  { icon: FileText, step: "1", title: "Prescription médicale", desc: "Demandez à votre médecin une prescription médicale de transport (PMT) précisant le mode de transport nécessaire." },
-                  { icon: PhoneCall, step: "2", title: "Appelez-nous", desc: `Contactez-nous au ${SITE_CONFIG.phoneDisplay}. Nous organisons votre transport vers ${hospital.name} selon vos besoins.` },
-                  { icon: HeartHandshake, step: "3", title: "On s'occupe de tout", desc: "Nos ambulanciers viennent vous chercher, vous transportent en toute sécurité et vous accompagnent." },
-                ].map((s) => (
-                  <div key={s.step} className="relative text-center">
-                    <div className="relative z-10 mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary font-heading text-2xl font-bold text-white shadow-lg ring-4 ring-primary-light">
+            <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-4">
+              {[
+                { icon: FileText, step: "1", title: "Prescription", desc: "Votre médecin vous délivre une prescription de transport (cerfa volet 4)" },
+                { icon: PhoneCall, step: "2", title: "Réservation", desc: `Appelez le ${SITE_CONFIG.phoneDisplay} ou remplissez notre formulaire en ligne` },
+                { icon: HeartHandshake, step: "3", title: "Transport", desc: "Nous venons vous chercher et vous conduisons en toute sécurité" },
+              ].map((s, i) => (
+                <div key={s.step} className="flex flex-1 flex-col items-center text-center">
+                  <div className="flex items-center gap-0 w-full justify-center">
+                    {i > 0 && <div className="hidden h-0.5 flex-1 bg-grey-100 md:block" />}
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary font-heading text-xl font-bold text-white shadow-lg">
                       {s.step}
                     </div>
-                    <h3 className="mb-3 font-heading text-xl font-semibold text-dark">{s.title}</h3>
-                    <p className="text-grey-600 leading-relaxed">{s.desc}</p>
+                    {i < 2 && <div className="hidden h-0.5 flex-1 bg-grey-100 md:block" />}
                   </div>
-                ))}
-              </div>
+                  <h3 className="mt-4 mb-2 font-heading text-lg font-semibold text-dark">{s.title}</h3>
+                  <p className="text-grey-600 leading-relaxed">{s.desc}</p>
+                </div>
+              ))}
             </div>
           </RevealOnScroll>
           <RevealOnScroll>
@@ -114,14 +116,27 @@ export default function HospitalPageTemplate({ hospital }: HospitalPageTemplateP
         </div>
       </section>
 
-      {/* Link to zone */}
+      {/* Other hospitals with images */}
       <section className="bg-white section-padding">
-        <div className="container-custom max-w-4xl text-center">
-          <RevealOnScroll>
-            <p className="text-lg text-grey-600 mb-4">Nous desservons de nombreuses communes dans le Haut-Rhin et les Trois Frontières.</p>
-            <Link href="/zone-intervention" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white transition-all hover:bg-primary-dark hover:shadow-lg">
-              Voir notre zone d&apos;intervention <MapPin className="h-4 w-4" aria-hidden="true" />
-            </Link>
+        <div className="container-custom max-w-4xl">
+          <RevealOnScroll><SectionHeading title="Autres Établissements" surtitre="VOIR AUSSI" /></RevealOnScroll>
+          <RevealOnScroll stagger>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {otherHospitals.map((h) => (
+                <Link key={h.slug} href={`/transport/${h.slug}`} className="group overflow-hidden rounded-2xl border border-grey-100 bg-white transition-all hover:shadow-lg hover:-translate-y-0.5">
+                  <div className="relative h-32">
+                    <Image src={h.image} alt={`${h.name} — Transport médical 3F Ambulance`} fill className="object-cover" quality={75} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-heading text-sm font-bold text-dark group-hover:text-primary transition-colors leading-tight">{h.name}</h3>
+                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-primary">
+                      Voir <ArrowRight className="h-3 w-3" aria-hidden="true" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </RevealOnScroll>
         </div>
       </section>

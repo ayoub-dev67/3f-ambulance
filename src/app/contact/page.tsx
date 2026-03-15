@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Phone, Clock, MapPin, MessageCircle } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -14,8 +15,8 @@ export const metadata = generatePageMetadata({
 export default function ContactPage() {
   return (
     <>
-      {/* Hero with badge */}
-      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#041E42] via-[#0B60B0] to-[#084B8A] md:min-h-[400px]">
+      {/* Hero */}
+      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#002B5C] via-[#0057B8] to-[#003DA5] md:min-h-[400px]">
         <div className="container-custom w-full py-20 text-center md:py-28">
           <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200 backdrop-blur-sm">Contactez-nous</span>
           <h1 className="mx-auto max-w-4xl font-heading text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">Contactez 3F Ambulance</h1>
@@ -23,39 +24,35 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Phone banner */}
-      <section className="bg-white py-10 shadow-sm">
-        <div className="container-custom">
-          <RevealOnScroll>
-            <div className="mx-auto max-w-2xl rounded-2xl bg-primary-light px-8 py-6 text-center">
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white ring-pulse relative">
-                <Phone className="h-6 w-6" aria-hidden="true" />
-              </div>
-              <a href={SITE_CONFIG.phoneHref} className="inline-block font-heading text-4xl font-black text-dark transition-colors hover:text-primary md:text-5xl">{SITE_CONFIG.phoneDisplay}</a>
-              <p className="mt-2 text-grey-600">Disponible 24h/24, 7j/7 — y compris week-ends et jours fériés</p>
-            </div>
-          </RevealOnScroll>
+      {/* Urgency banner */}
+      <div className="container-custom">
+        <div className="relative z-10 -mt-8 mx-auto max-w-4xl rounded-2xl bg-gradient-to-r from-primary-dark to-primary py-8 px-6 text-center shadow-xl">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-pulse relative">
+            <Phone className="h-7 w-7 text-accent" aria-hidden="true" />
+          </div>
+          <a href={SITE_CONFIG.phoneHref} className="inline-block font-heading text-4xl font-black text-white transition-opacity hover:opacity-80 md:text-5xl">{SITE_CONFIG.phoneDisplay}</a>
+          <p className="mt-2 text-blue-100">Disponible 24h/24, 7j/7 — Urgences &amp; Réservations</p>
         </div>
-      </section>
+      </div>
 
-      {/* Form + sidebar on grey background */}
+      {/* Form + sidebar */}
       <section className="bg-light section-padding">
         <div className="container-custom">
           <RevealOnScroll>
-            <div className="grid gap-10 lg:grid-cols-3">
-              <div className="lg:col-span-2">
+            <div className="grid gap-10 lg:grid-cols-12">
+              <div className="lg:col-span-7">
                 <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-widest text-primary">Formulaire</span>
-                <h2 className="mb-2 font-heading text-2xl font-bold text-dark md:text-3xl">Demander un transport</h2>
+                <h2 className="mb-2 font-heading text-2xl font-bold text-dark md:text-3xl">Demandez un transport</h2>
                 <div className="mb-4 h-1 w-16 rounded-full bg-primary" />
-                <p className="mb-8 text-grey-600 leading-relaxed">Pas besoin de tout savoir avant de nous contacter. Indiquez-nous le minimum — on vous rappelle pour organiser le reste. Si c&apos;est urgent, appelez directement : c&apos;est plus rapide qu&apos;un formulaire.</p>
-                <div className="rounded-2xl bg-white p-8 shadow-xl"><ContactForm /></div>
+                <p className="mb-8 text-grey-600 leading-relaxed">Réponse rapide garantie. Pour les urgences, appelez-nous directement.</p>
+                <div className="rounded-2xl bg-white p-8 shadow-lg md:p-10"><ContactForm /></div>
               </div>
               {/* Dark info panel */}
-              <div className="space-y-6">
-                <div className="rounded-2xl bg-[#084B8A] p-8 text-white">
+              <div className="space-y-6 lg:col-span-5">
+                <div className="rounded-2xl bg-[#003DA5] p-8 text-white">
                   <h3 className="mb-6 font-heading text-xl font-semibold">Informations pratiques</h3>
-                  <ul className="space-y-5">
-                    <li>
+                  <ul className="space-y-6">
+                    <li className="border-b border-white/10 pb-6">
                       <a href={SITE_CONFIG.phoneHref} className="flex items-start gap-4 group">
                         <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-accent"><Phone className="h-5 w-5" aria-hidden="true" /></div>
                         <div>
@@ -64,33 +61,67 @@ export default function ContactPage() {
                         </div>
                       </a>
                     </li>
-                    <li className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-blue-300"><Clock className="h-5 w-5" aria-hidden="true" /></div>
-                      <div>
-                        <p className="text-sm text-blue-200">Horaires</p>
-                        <p className="font-semibold">{SITE_CONFIG.hours}</p>
-                        <p className="text-sm text-blue-200">Y compris week-ends et jours fériés</p>
+                    <li className="border-b border-white/10 pb-6">
+                      <a href={SITE_CONFIG.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-green-400"><MessageCircle className="h-5 w-5" aria-hidden="true" /></div>
+                        <div>
+                          <p className="text-sm text-blue-200">WhatsApp</p>
+                          <p className="font-semibold group-hover:text-blue-200 transition-colors">Écrivez-nous sur WhatsApp</p>
+                        </div>
+                      </a>
+                    </li>
+                    <li className="border-b border-white/10 pb-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-blue-300"><Clock className="h-5 w-5" aria-hidden="true" /></div>
+                        <div>
+                          <p className="text-sm text-blue-200">Horaires</p>
+                          <p className="font-semibold">{SITE_CONFIG.hours}</p>
+                        </div>
                       </div>
                     </li>
-                    <li className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-blue-300"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
-                      <div>
-                        <p className="text-sm text-blue-200">Zone d&apos;intervention</p>
-                        <p className="font-semibold">{SITE_CONFIG.publicLocation}</p>
+                    <li>
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-blue-300"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
+                        <div>
+                          <p className="text-sm text-blue-200">Zone</p>
+                          <p className="font-semibold">{SITE_CONFIG.publicLocation}</p>
+                        </div>
                       </div>
                     </li>
                   </ul>
-                </div>
-                <a href={SITE_CONFIG.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-2xl border border-success/30 bg-success/5 p-8 transition-all hover:bg-success/10 hover:shadow-lg">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-success/20 text-success"><MessageCircle className="h-6 w-6" aria-hidden="true" /></div>
-                  <div>
-                    <p className="font-heading text-lg font-bold text-dark">WhatsApp</p>
-                    <p className="text-grey-600">Écrivez-nous sur WhatsApp</p>
+                  {/* Trust logos */}
+                  <div className="mt-8 flex items-center justify-center gap-4 border-t border-white/10 pt-6">
+                    <div className="relative h-8 w-20 opacity-60">
+                      <Image src="/images/logos/assurance-maladie.png" alt="Assurance Maladie" fill className="object-contain" />
+                    </div>
+                    <div className="relative h-8 w-20 opacity-60">
+                      <Image src="/images/logos/carte-vitale.png" alt="Carte Vitale" fill className="object-contain" />
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* Google Maps */}
+      <section className="bg-white section-padding">
+        <div className="container-custom">
+          <h2 className="mb-4 font-heading text-2xl font-bold text-dark">Nous trouver</h2>
+          <div className="overflow-hidden rounded-2xl shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42000!2d7.55!3d47.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791b6c4e3e0c5e7%3A0x40a5fb99a3f1b70!2sSaint-Louis%2C+France!5e0!3m2!1sfr!2sfr!4v1"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="3F Ambulance - Saint-Louis, Haut-Rhin"
+            />
+          </div>
+          <p className="mt-4 text-center text-sm text-grey-600">Zone d&apos;intervention : Saint-Louis et les Trois Frontières</p>
         </div>
       </section>
 

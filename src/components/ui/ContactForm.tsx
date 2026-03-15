@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Send, Loader2, User, Phone, Mail, Truck, Calendar, MapPin, CheckCircle, AlertCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Send, Loader2, User, Phone, Mail, Truck, Calendar, MapPin, AlertCircle } from "lucide-react";
 
 interface FormErrors {
   name?: string;
@@ -52,8 +53,8 @@ function FieldError({ message }: { message?: string }) {
 }
 
 export default function ContactForm() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitError, setSubmitError] = useState(false);
 
@@ -79,8 +80,8 @@ export default function ContactForm() {
       });
 
       if (res.ok) {
-        setIsSuccess(true);
-        e.currentTarget.reset();
+        router.push("/merci");
+        return;
       } else {
         setSubmitError(true);
       }
@@ -89,20 +90,6 @@ export default function ContactForm() {
     } finally {
       setIsSubmitting(false);
     }
-  }
-
-  if (isSuccess) {
-    return (
-      <div className="flex flex-col items-center gap-4 rounded-2xl border-2 border-success/30 bg-success/5 p-10 text-center animate-fade-in">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-success/20 text-success">
-          <CheckCircle className="h-8 w-8" aria-hidden="true" />
-        </div>
-        <p className="font-heading text-xl font-bold text-success">Demande envoyée avec succès !</p>
-        <p className="text-grey-600">
-          On a bien reçu votre demande. Un membre de notre équipe vous rappelle dans les plus brefs délais pour organiser votre transport. Si c&apos;est urgent, n&apos;attendez pas — appelez le <strong>06 33 81 40 47</strong>.
-        </p>
-      </div>
-    );
   }
 
   const inputBase = "w-full rounded-xl border-2 py-3.5 pl-12 pr-4 text-grey-800 outline-none transition-all";

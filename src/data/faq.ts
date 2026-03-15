@@ -7,15 +7,15 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "Mon transport est-il remboursé par l'Assurance Maladie ?",
-    answer: "Oui, à condition d'avoir une prescription médicale de transport (volet 4 du cerfa) établie par votre médecin AVANT le transport. En règle générale, la Sécurité sociale rembourse 65% du trajet. Si vous êtes en ALD (affection longue durée), en accident du travail ou en congé maternité, la prise en charge peut aller jusqu'à 100%. Nous pratiquons le tiers payant : vous ne réglez que le ticket modérateur (la part non couverte par la Sécu), et votre mutuelle peut le prendre en charge. Nous gérons toute la facturation avec la CPAM.",
+    answer: "Oui, à condition d'avoir une prescription médicale de transport (volet 4 du cerfa) établie par votre médecin AVANT le transport. En règle générale, la Sécurité sociale rembourse 65% du trajet. Si vous êtes en ALD (affection longue durée), en accident du travail ou en congé maternité, la prise en charge peut aller jusqu'à 100%. Nous pratiquons le tiers payant : vous ne réglez que le ticket modérateur (la part non couverte par la Sécu), et votre mutuelle peut le prendre en charge. Nous gérons toute la facturation avec la CPAM. <a href=\"/blog/transport-medical-rembourse-securite-sociale\">En savoir plus sur le remboursement →</a>",
   },
   {
     question: "Quelle est la différence entre une ambulance et un VSL ?",
-    answer: "C'est votre médecin qui décide du mode de transport selon votre état de santé — le patient ne choisit pas lui-même. L'ambulance est prescrite quand le patient doit être allongé ou semi-allongé, ou quand une surveillance médicale est nécessaire pendant le trajet (post-opératoire, oxygène, monitoring). Le VSL (Véhicule Sanitaire Léger) est prescrit pour les patients qui peuvent rester assis et qui n'ont pas besoin de surveillance particulière — typiquement pour des consultations, des examens ou des séances de soins régulières.",
+    answer: "C'est votre médecin qui décide du mode de transport selon votre état de santé — le patient ne choisit pas lui-même. L'ambulance est prescrite quand le patient doit être allongé ou semi-allongé, ou quand une surveillance médicale est nécessaire pendant le trajet (post-opératoire, oxygène, monitoring). Le VSL (Véhicule Sanitaire Léger) est prescrit pour les patients qui peuvent rester assis et qui n'ont pas besoin de surveillance particulière — typiquement pour des consultations, des examens ou des séances de soins régulières. <a href=\"/services\">Voir tous nos services →</a> | <a href=\"/blog/difference-ambulance-vsl-taxi-conventionne\">Lire notre guide complet →</a>",
   },
   {
     question: "Quelle est votre zone d'intervention ?",
-    answer: "Notre base est à Saint-Louis (68). Nous intervenons en moins de 30 minutes sur tout le secteur des Trois Frontières : Huningue, Hésingue, Blotzheim, Bartenheim, Village-Neuf, Kembs, Sierentz et les communes voisines. Nous assurons aussi les transports vers Mulhouse (30 min), Strasbourg (1h30), Bâle en Suisse et Lörrach en Allemagne. Le corridor Saint-Louis ↔ Strasbourg est notre axe longue distance le plus fréquenté.",
+    answer: "Notre base est à Saint-Louis (68). Nous intervenons en moins de 30 minutes sur tout le secteur des Trois Frontières : Huningue, Hésingue, Blotzheim, Bartenheim, Village-Neuf, Kembs, Sierentz et les communes voisines. Nous assurons aussi les transports vers Mulhouse (30 min), Strasbourg (1h30), Bâle en Suisse et Lörrach en Allemagne. Le corridor Saint-Louis ↔ Strasbourg est notre axe longue distance le plus fréquenté. <a href=\"/zone-intervention\">Voir notre zone d'intervention complète →</a>",
   },
   {
     question: "Intervenez-vous 24h/24 ?",
@@ -27,7 +27,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "Faites-vous des transports vers la Suisse ou l'Allemagne ?",
-    answer: "Oui, c'est même l'une de nos spécialités. Nous transportons régulièrement des patients vers l'Universitätsspital de Bâle (à 15 min de Saint-Louis), les hôpitaux de Lörrach et le Universitätsklinikum de Freiburg. Nous connaissons les procédures de transport médical transfrontalier et nous nous occupons de la coordination avec les établissements étrangers. Nous intervenons aussi à l'EuroAirport pour les rapatriements sanitaires.",
+    answer: "Oui, c'est même l'une de nos spécialités. Nous transportons régulièrement des patients vers l'Universitätsspital de Bâle (à 15 min de Saint-Louis), les hôpitaux de Lörrach et le Universitätsklinikum de Freiburg. Nous connaissons les procédures de transport médical transfrontalier et nous nous occupons de la coordination avec les établissements étrangers. Nous intervenons aussi à <a href=\"/transport/euroairport-bale-mulhouse\">l'EuroAirport</a> pour les rapatriements sanitaires.",
   },
   {
     question: "Comment se déroule un transport en ambulance ?",
@@ -39,6 +39,6 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "Assurez-vous des transports longue distance ?",
-    answer: "Oui, nous effectuons des transports longue distance tous les jours. Notre axe principal est le corridor Saint-Louis ↔ Strasbourg (environ 1h30 de route) pour les consultations aux Hôpitaux Universitaires de Strasbourg : Hautepierre, Nouvel Hôpital Civil, ICANS (cancérologie). Nous assurons aussi des transferts vers Colmar, Belfort, Besançon et toute destination en France. Nos véhicules sont équipés pour garantir votre confort sur les longs trajets.",
+    answer: "Oui, nous effectuons des transports longue distance tous les jours. Notre axe principal est le corridor Saint-Louis ↔ Strasbourg (environ 1h30 de route) pour les consultations aux <a href=\"/transport/hopital-strasbourg\">Hôpitaux Universitaires de Strasbourg</a> : Hautepierre, Nouvel Hôpital Civil, ICANS (cancérologie). Nous assurons aussi des transferts vers Colmar, Belfort, Besançon et toute destination en France. Nos véhicules sont équipés pour garantir votre confort sur les longs trajets.",
   },
 ];

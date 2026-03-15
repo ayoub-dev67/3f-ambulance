@@ -1,6 +1,7 @@
 export interface CityData {
   slug: string;
   name: string;
+  image: string;
   description: string;
   distance: string;
   metaTitle: string;
@@ -15,6 +16,7 @@ export interface CityData {
 export interface HospitalData {
   slug: string;
   name: string;
+  image: string;
   city: string;
   specialties: string[];
   metaTitle: string;

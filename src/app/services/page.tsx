@@ -1,4 +1,6 @@
-import { Ambulance, Car, CarTaxiFront, Route, Globe, Phone, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { Ambulance, Car, CarTaxiFront, Route, Globe, Phone, CheckCircle, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generatePageMetadata } from "@/lib/metadata";
 import CTABanner from "@/components/ui/CTABanner";
@@ -17,17 +19,20 @@ interface ServiceSectionProps {
   title: string;
   description: string;
   situations: string[];
+  image: string;
+  imageAlt: string;
+  links?: { label: string; href: string }[];
   reverse?: boolean;
   bgAlt?: boolean;
 }
 
-function ServiceSection({ id, icon, title, description, situations, reverse, bgAlt }: ServiceSectionProps) {
+function ServiceSection({ id, icon, title, description, situations, image, imageAlt, links, reverse, bgAlt }: ServiceSectionProps) {
   return (
     <section id={id} className={`section-padding scroll-mt-24 ${bgAlt ? "bg-primary-50" : "bg-white"}`}>
       <div className="container-custom">
         <RevealOnScroll>
-          <div className={`flex flex-col gap-10 ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"} items-center`}>
-            <div className="flex flex-1 flex-col">
+          <div className={`grid gap-12 items-center md:grid-cols-2 ${reverse ? "" : ""}`}>
+            <div className={`${reverse ? "md:order-2" : ""}`}>
               <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-light text-primary">{icon}</div>
               <h2 className="mb-4 font-heading text-2xl font-bold text-dark md:text-3xl lg:text-4xl">{title}</h2>
               <p className="mb-8 text-lg text-grey-600 leading-relaxed">{description}</p>
@@ -42,13 +47,24 @@ function ServiceSection({ id, icon, title, description, situations, reverse, bgA
                   ))}
                 </ul>
               </div>
+              {links && links.length > 0 && (
+                <div className="mb-6 flex flex-wrap gap-3">
+                  {links.map((link) => (
+                    <Link key={link.href} href={link.href} className="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                      <ArrowRight className="h-4 w-4" /> {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
               <a href={SITE_CONFIG.phoneHref} className="inline-flex w-fit items-center gap-3 rounded-full bg-accent px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:bg-accent-hover hover:shadow-xl">
                 <Phone className="h-5 w-5" />
                 Appelez le {SITE_CONFIG.phoneDisplay}
               </a>
             </div>
-            <div className="flex flex-1 items-center justify-center">
-              <div className="flex h-52 w-52 items-center justify-center rounded-3xl bg-primary-50 text-primary md:h-72 md:w-72">{icon}</div>
+            <div className={`${reverse ? "md:order-1" : ""}`}>
+              <div className="relative h-[300px] md:h-[350px] overflow-hidden rounded-2xl shadow-lg">
+                <Image src={image} alt={imageAlt} fill className="object-cover" quality={75} />
+              </div>
             </div>
           </div>
         </RevealOnScroll>
@@ -60,7 +76,7 @@ function ServiceSection({ id, icon, title, description, situations, reverse, bgA
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#041E42] via-[#0B60B0] to-[#084B8A] md:min-h-[400px]">
+      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#002B5C] via-[#0057B8] to-[#003DA5] md:min-h-[400px]">
         <div className="container-custom w-full py-20 text-center md:py-28">
           <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200 backdrop-blur-sm">Nos services</span>
           <h1 className="mx-auto max-w-4xl font-heading text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
@@ -76,6 +92,8 @@ export default function ServicesPage() {
         id="ambulance"
         icon={<Ambulance className="h-10 w-10" />}
         title="Transport en Ambulance"
+        image="/images/ambulance.jpg"
+        imageAlt="Ambulance 3F Ambulance — Transport médical Saint-Louis"
         description="L'ambulance, c'est pour les patients qui doivent être allongés ou semi-allongés, ou qui ont besoin d'une surveillance pendant le trajet. Brancard, oxygène, monitoring, matériel de premiers secours — tout est à bord. Nos ambulanciers sont diplômés d'État et formés aux gestes d'urgence. C'est votre médecin qui décide si vous avez besoin d'une ambulance (il le précise sur le volet 4 du cerfa)."
         situations={[
           "Retour à domicile après une opération à la Clinique Diaconat-Roosevelt ou à Émile Muller",
@@ -85,11 +103,16 @@ export default function ServicesPage() {
           "Rapatriement sanitaire depuis l'EuroAirport ou un hôpital éloigné",
           "Transport vers les urgences du GHRMSA (Saint-Louis ou Mulhouse)",
         ]}
+        links={[
+          { label: "Transport vers l'hôpital de Saint-Louis", href: "/transport/hopital-saint-louis" },
+        ]}
       />
       <ServiceSection
         id="vsl"
         icon={<Car className="h-10 w-10" />}
         title="VSL — Véhicule Sanitaire Léger"
+        image="/images/vsl.jpg"
+        imageAlt="VSL Véhicule Sanitaire Léger — 3F Ambulance"
         description="Le VSL, c'est pour les patients qui peuvent rester assis pendant le trajet. Véhicule confortable et climatisé, conduit par un auxiliaire ambulancier qualifié. C'est le mode de transport le plus courant pour les soins réguliers : dialyse, chimio, consultations de suivi. Pris en charge par l'Assurance Maladie sur prescription médicale."
         situations={[
           "Séances de dialyse au centre de Saint-Louis (16 postes, souvent départ à 5h30) ou à Mulhouse",
@@ -99,6 +122,10 @@ export default function ServicesPage() {
           "Séances de kinésithérapie et rééducation au SSR de Sierentz",
           "Consultations de suivi post-opératoire à la Clinique Diaconat-Roosevelt",
         ]}
+        links={[
+          { label: "Transport vers l'hôpital Émile Muller", href: "/transport/hopital-emile-muller-mulhouse" },
+          { label: "Transport vers la Clinique Diaconat", href: "/transport/clinique-diaconat-mulhouse" },
+        ]}
         reverse
         bgAlt
       />
@@ -106,6 +133,8 @@ export default function ServicesPage() {
         id="taxi-conventionne"
         icon={<CarTaxiFront className="h-10 w-10" />}
         title="Taxi Conventionné CPAM"
+        image="/images/taxi-medical.jpg"
+        imageAlt="Taxi conventionné — Transport médical agréé CPAM"
         description="Le taxi conventionné, c'est la solution pour les patients autonomes qui ont une prescription médicale de transport. Votre médecin remplit le volet 4 du cerfa, et la Sécu rembourse 65 % du trajet (100 % en ALD, accident du travail ou maternité). On pratique le tiers payant : dans la plupart des cas, vous n'avancez rien."
         situations={[
           "Rendez-vous chez un spécialiste à Mulhouse ou Saint-Louis",
@@ -120,6 +149,8 @@ export default function ServicesPage() {
         id="longue-distance"
         icon={<Route className="h-10 w-10" />}
         title="Transport Longue Distance"
+        image="/images/hopitaux/hopital-strasbourg.jpg"
+        imageAlt="Hôpitaux Universitaires de Strasbourg — Transport longue distance 3F Ambulance"
         description="Notre axe longue distance principal, c'est le corridor Saint-Louis ↔ Strasbourg : environ 1h30 de route par l'A35. On le fait tous les jours pour des patients suivis aux HUS — Hautepierre, Nouvel Hôpital Civil, ICANS (cancérologie). On assure aussi les trajets vers Colmar, Belfort, Besançon et toute destination en France. Nos véhicules sont équipés pour que le trajet soit confortable même sur les longues distances."
         situations={[
           "Consultations aux HUS de Strasbourg : Hautepierre, Nouvel Hôpital Civil, ICANS",
@@ -129,6 +160,9 @@ export default function ServicesPage() {
           "Rapatriement sanitaire depuis un hôpital éloigné vers Saint-Louis ou Mulhouse",
           "Tout trajet longue distance en France métropolitaine sur prescription médicale",
         ]}
+        links={[
+          { label: "Transport vers les hôpitaux de Strasbourg", href: "/transport/hopital-strasbourg" },
+        ]}
         reverse
         bgAlt
       />
@@ -136,6 +170,8 @@ export default function ServicesPage() {
         id="transfrontalier"
         icon={<Globe className="h-10 w-10" />}
         title="Transport Transfrontalier"
+        image="/images/hopitaux/euroairport-bale-mulhouse.jpg"
+        imageAlt="EuroAirport Bâle-Mulhouse — Transport transfrontalier 3F Ambulance"
         description="On est aux Trois Frontières — Bâle est à 15 minutes, Lörrach à 10 minutes, Freiburg à 45 minutes. Le transport transfrontalier, c'est notre quotidien. Beaucoup de patients de la région sont suivis à l'Universitätsspital de Bâle pour des spécialités pointues. On connaît les procédures, les accès hospitaliers, et on se coordonne avec les établissements étrangers."
         situations={[
           "Transport vers l'Universitätsspital Basel — à 15 min de Saint-Louis, c'est l'hôpital universitaire le plus proche",
@@ -144,6 +180,9 @@ export default function ServicesPage() {
           "Transferts depuis et vers l'EuroAirport Bâle-Mulhouse (sur notre commune, à 5 min)",
           "Rapatriement sanitaire international — coordination avec les sociétés d'assistance",
           "Travailleurs frontaliers ayant besoin d'un transport vers un hôpital suisse ou allemand",
+        ]}
+        links={[
+          { label: "Transport via l'EuroAirport", href: "/transport/euroairport-bale-mulhouse" },
         ]}
       />
 

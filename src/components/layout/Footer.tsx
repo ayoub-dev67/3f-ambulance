@@ -1,6 +1,15 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Clock, MapPin, Cross, Ambulance, MessageCircle, Siren } from "lucide-react";
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
+
+const FOOTER_LOGOS = [
+  { src: "/images/logos/etoile-de-vie.png", alt: "Étoile de Vie" },
+  { src: "/images/logos/assurance-maladie.png", alt: "Assurance Maladie" },
+  { src: "/images/logos/carte-vitale.png", alt: "Carte Vitale" },
+  { src: "/images/logos/ars-grand-est.png", alt: "ARS Grand Est" },
+  { src: "/images/logos/taxi-conventionne.jpg", alt: "Taxi Conventionné CPAM" },
+];
 
 export default function Footer() {
   return (
@@ -115,7 +124,18 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-12 border-t border-gray-800 pt-8 text-center">
+          {/* Trust logos */}
+          <div className="mt-12 border-t border-white/10 pt-6 pb-4">
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              {FOOTER_LOGOS.map((logo) => (
+                <div key={logo.src} className="relative h-6 w-16 opacity-30 grayscale">
+                  <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 pt-8 text-center">
             <p className="text-sm text-gray-500">
               © {new Date().getFullYear()} {SITE_CONFIG.fullName}. Tous droits réservés.{" "}
               <Link href="/mentions-legales" className="underline transition-colors hover:text-white">

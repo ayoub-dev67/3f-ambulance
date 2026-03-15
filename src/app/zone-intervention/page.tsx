@@ -1,5 +1,6 @@
-import { MapPin, Route, Globe, Phone, ArrowRight } from "lucide-react";
+import { MapPin, Clock, Shield, Phone, ArrowRight, Plane } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generatePageMetadata } from "@/lib/metadata";
 import { cities } from "@/data/cities";
@@ -15,30 +16,39 @@ export const metadata = generatePageMetadata({
 
 const citySlugs = new Set(cities.map((c) => c.slug));
 
-interface ZoneSectionProps {
+interface ZoneSectorProps {
   title: string;
+  imageSlug: string;
   communes: string[];
 }
 
-function ZoneSection({ title, communes }: ZoneSectionProps) {
+function ZoneSector({ title, imageSlug, communes }: ZoneSectorProps) {
+  const cityImage = cities.find((c) => c.slug === imageSlug);
   return (
-    <div className="mb-10">
-      <h3 className="mb-4 flex items-center gap-2.5 font-heading text-xl font-semibold text-dark">
-        <MapPin className="h-5 w-5 text-primary" />{title}
-      </h3>
-      <div className="flex flex-wrap gap-2">
-        {communes.map((c) => {
-          const slug = c.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
-          const hasPage = citySlugs.has(slug);
-          if (hasPage) {
-            return (
-              <Link key={c} href={`/ambulance/${slug}`} className="rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-white hover:border-primary hover:shadow-md">
-                {c}
-              </Link>
-            );
-          }
-          return <span key={c} className="rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-medium text-primary">{c}</span>;
-        })}
+    <div className="overflow-hidden rounded-2xl border border-grey-100 bg-white transition-all hover:shadow-lg">
+      <div className="relative h-48">
+        {cityImage && (
+          <Image src={cityImage.image} alt={`Secteur ${title} — 3F Ambulance`} fill className="object-cover" quality={75} />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
+        <span className="absolute bottom-3 left-4 font-heading text-xl font-bold text-white">{title}</span>
+      </div>
+      <div className="p-6">
+        <div className="flex flex-wrap gap-2">
+          {communes.map((c) => {
+            const slug = c.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-");
+            const hasPage = citySlugs.has(slug);
+            if (hasPage) {
+              return (
+                <Link key={c} href={`/ambulance/${slug}`} className="rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-white transition-all hover:bg-primary-dark hover:shadow-md">
+                  {c}
+                </Link>
+              );
+            }
+            return <span key={c} className="rounded-full bg-grey-100 px-4 py-1.5 text-sm font-medium text-grey-600">{c}</span>;
+          })}
+        </div>
+        <p className="mt-3 text-sm text-grey-600">{communes.length} communes couvertes</p>
       </div>
     </div>
   );
@@ -47,72 +57,80 @@ function ZoneSection({ title, communes }: ZoneSectionProps) {
 export default function ZoneInterventionPage() {
   return (
     <>
-      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#041E42] via-[#0B60B0] to-[#084B8A] md:min-h-[400px]">
-        <div className="container-custom w-full py-20 text-center md:py-28">
-          <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200 backdrop-blur-sm">Zone d&apos;intervention</span>
-          <h1 className="mx-auto max-w-4xl font-heading text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">Notre Zone d&apos;Intervention</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl text-blue-100/80 leading-relaxed">3F Ambulance intervient à Saint-Louis et dans toute la zone des Trois Frontières, avec des liaisons longue distance et transfrontalières.</p>
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-[#002B5C] to-[#0057B8] py-16 md:py-20">
+        <div className="container-custom text-center">
+          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-widest text-blue-300">Zone d&apos;intervention</span>
+          <h1 className="mx-auto max-w-4xl font-heading text-3xl font-bold text-white md:text-4xl lg:text-5xl">Nous intervenons sur tout le Sud Alsace</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100/80 leading-relaxed">De Saint-Louis à Mulhouse, de Bâle à Strasbourg — 3F Ambulance couvre les Trois Frontières et bien au-delà.</p>
         </div>
       </section>
 
+      {/* Sectors grid with images */}
       <section className="bg-white section-padding">
-        <div className="container-custom max-w-4xl">
+        <div className="container-custom">
           <RevealOnScroll><SectionHeading title="Communes Desservies" subtitle="Cliquez sur une commune pour découvrir nos services sur place." /></RevealOnScroll>
-          <RevealOnScroll><ZoneSection title="Saint-Louis & Proximité" communes={["Saint-Louis", "Bourgfelden", "Village-Neuf", "Huningue", "Rosenau", "Neuwiller"]} /></RevealOnScroll>
-          <RevealOnScroll><ZoneSection title="Secteur Blotzheim" communes={["Blotzheim", "Bartenheim", "Hésingue", "Hégenheim", "Buschwiller", "Wentzwiller", "Attenschwiller"]} /></RevealOnScroll>
-          <RevealOnScroll><ZoneSection title="Secteur Kembs" communes={["Kembs", "Niffer", "Rumersheim-le-Haut", "Ottmarsheim", "Chalampé"]} /></RevealOnScroll>
-          <RevealOnScroll><ZoneSection title="Secteur Sierentz" communes={["Sierentz", "Landser", "Leymen", "Folgensbourg", "Ranspach-le-Bas", "Ranspach-le-Haut", "Stetten"]} /></RevealOnScroll>
-          <RevealOnScroll><ZoneSection title="Secteur Hagenthal" communes={["Hagenthal-le-Bas", "Hagenthal-le-Haut", "Liebenswiller", "Oltingue", "Raedersdorf"]} /></RevealOnScroll>
-          <RevealOnScroll><ZoneSection title="Mulhouse & Agglomération" communes={["Mulhouse", "Rixheim", "Habsheim", "Illzach", "Kingersheim", "Wittenheim", "Riedisheim"]} /></RevealOnScroll>
-        </div>
-      </section>
-
-      <section className="bg-primary-50 section-padding">
-        <div className="container-custom max-w-4xl">
-          <RevealOnScroll>
-            <div className="rounded-2xl border border-primary/20 bg-white p-8 md:p-10 shadow-sm">
-              <div className="flex flex-col gap-6 md:flex-row md:items-start">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-primary-light text-primary"><Route className="h-8 w-8" /></div>
-                <div className="flex-1">
-                  <h2 className="mb-4 font-heading text-2xl font-bold text-dark md:text-3xl">Transport Longue Distance</h2>
-                  <p className="mb-4 text-lg text-grey-600 leading-relaxed">Notre axe principal : le <strong className="text-dark">corridor Saint-Louis ↔ Strasbourg</strong> (1h30 par l&apos;A35). On le fait tous les jours pour des patients suivis aux HUS — Hautepierre, Nouvel Hôpital Civil, ICANS. Transferts inter-hospitaliers, consultations d&apos;oncologie, de neurochirurgie, de cardiologie interventionnelle.</p>
-                  <p className="mb-8 text-lg text-grey-600 leading-relaxed">On assure aussi les trajets vers Colmar (45 min), Belfort (1h15), Besançon et toute destination en France métropolitaine.</p>
-                  <div className="flex flex-wrap gap-3">
-                    <a href={SITE_CONFIG.phoneHref} className="inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:bg-accent-hover hover:shadow-xl"><Phone className="h-5 w-5" />{SITE_CONFIG.phoneDisplay}</a>
-                    <Link href="/services#longue-distance" className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-6 py-3 font-medium text-primary transition-all hover:bg-primary hover:text-white">Nos services <ArrowRight className="h-4 w-4" /></Link>
-                  </div>
-                </div>
-              </div>
+          <RevealOnScroll stagger>
+            <div className="grid gap-6 md:grid-cols-2">
+              <ZoneSector title="Saint-Louis & Proximité" imageSlug="saint-louis" communes={["Saint-Louis", "Bourgfelden", "Village-Neuf", "Huningue", "Rosenau", "Neuwiller"]} />
+              <ZoneSector title="Secteur Blotzheim" imageSlug="blotzheim" communes={["Blotzheim", "Bartenheim", "Hésingue", "Hégenheim", "Buschwiller", "Wentzwiller", "Attenschwiller"]} />
+              <ZoneSector title="Secteur Kembs" imageSlug="kembs" communes={["Kembs", "Niffer", "Rumersheim-le-Haut", "Ottmarsheim", "Chalampé"]} />
+              <ZoneSector title="Secteur Sierentz" imageSlug="sierentz" communes={["Sierentz", "Landser", "Leymen", "Folgensbourg", "Ranspach-le-Bas", "Ranspach-le-Haut", "Stetten"]} />
+              <ZoneSector title="Secteur Hagenthal" imageSlug="hesingue" communes={["Hagenthal-le-Bas", "Hagenthal-le-Haut", "Liebenswiller", "Oltingue", "Raedersdorf"]} />
+              <ZoneSector title="Mulhouse & Agglomération" imageSlug="mulhouse" communes={["Mulhouse", "Rixheim", "Habsheim", "Illzach", "Kingersheim", "Wittenheim", "Riedisheim"]} />
             </div>
           </RevealOnScroll>
         </div>
       </section>
 
+      {/* Longue distance */}
+      <section className="bg-[#002B5C] py-16 md:py-20">
+        <div className="container-custom text-center">
+          <RevealOnScroll>
+            <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">Strasbourg ↔ Saint-Louis</h2>
+            <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
+              <span className="flex items-center gap-2"><MapPin className="h-5 w-5" aria-hidden="true" />~140 km</span>
+              <span className="hidden h-5 w-px bg-white/30 md:block" aria-hidden="true" />
+              <span className="flex items-center gap-2"><Clock className="h-5 w-5" aria-hidden="true" />~1h30</span>
+              <span className="hidden h-5 w-px bg-white/30 md:block" aria-hidden="true" />
+              <span className="flex items-center gap-2"><Shield className="h-5 w-5" aria-hidden="true" />Confort garanti</span>
+            </div>
+            <p className="mx-auto mt-8 max-w-2xl text-lg text-blue-100 leading-relaxed">Notre axe principal : transferts quotidiens vers les HUS — Hautepierre, Nouvel Hôpital Civil, ICANS. Oncologie, neurochirurgie, cardiologie interventionnelle. On fait aussi Colmar (45 min), Belfort (1h15) et toute la France.</p>
+            <a href={SITE_CONFIG.phoneHref} className="relative mt-10 inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-xl font-bold text-white shadow-[0_0_30px_rgba(229,62,62,0.4)] transition-all hover:bg-accent-hover hover:shadow-[0_0_40px_rgba(229,62,62,0.5)] hover:scale-105 ring-pulse" aria-label={`Appeler le ${SITE_CONFIG.phoneDisplay}`}>
+              <Phone className="h-6 w-6" aria-hidden="true" />Réserver un transport longue distance
+            </a>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* Transfrontalier */}
       <section className="bg-white section-padding">
         <div className="container-custom max-w-4xl">
-          <RevealOnScroll>
-            <div className="rounded-2xl border border-primary/20 bg-white p-8 md:p-10 shadow-sm">
-              <div className="flex flex-col gap-6 md:flex-row md:items-start">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-primary-light text-primary"><Globe className="h-8 w-8" /></div>
-                <div className="flex-1">
-                  <h2 className="mb-4 font-heading text-2xl font-bold text-dark md:text-3xl">Transport Transfrontalier</h2>
-                  <p className="mb-6 text-lg text-grey-600 leading-relaxed">Situés au cœur des Trois Frontières, nous assurons des transports sanitaires internationaux vers la Suisse et l&apos;Allemagne.</p>
-                  <div className="mb-8 grid gap-4 sm:grid-cols-2">
-                    {[
-                      { country: "Suisse", cities: "Bâle, Universitätsspital Basel, Liestal" },
-                      { country: "Allemagne", cities: "Lörrach, Weil am Rhein, Freiburg" },
-                      { country: "EuroAirport", cities: "Bâle-Mulhouse-Freiburg" },
-                      { country: "Autres", cities: "Sur demande, toute destination" },
-                    ].map((item) => (
-                      <div key={item.country} className="rounded-xl bg-primary-50 p-4">
-                        <p className="font-heading font-bold text-primary">{item.country}</p>
-                        <p className="text-sm text-grey-600">{item.cities}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <a href={SITE_CONFIG.phoneHref} className="inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:bg-accent-hover hover:shadow-xl"><Phone className="h-5 w-5" />{SITE_CONFIG.phoneDisplay}</a>
-                </div>
+          <RevealOnScroll><SectionHeading title="Transport Transfrontalier" surtitre="3 PAYS" /></RevealOnScroll>
+          <RevealOnScroll stagger>
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="rounded-2xl border border-grey-100 border-t-4 border-t-[#0057B8] bg-white p-6">
+                <p className="mb-1 text-2xl">🇫🇷</p>
+                <h3 className="mb-2 font-heading text-lg font-bold text-dark">France</h3>
+                <p className="text-grey-600">Saint-Louis et tout le Haut-Rhin</p>
               </div>
+              <div className="rounded-2xl border border-grey-100 border-t-4 border-t-accent bg-white p-6">
+                <p className="mb-1 text-2xl">🇨🇭</p>
+                <h3 className="mb-2 font-heading text-lg font-bold text-dark">Suisse</h3>
+                <p className="text-grey-600">Bâle, Universitätsspital, cliniques bâloises</p>
+              </div>
+              <div className="rounded-2xl border border-grey-100 border-t-4 border-t-[#D69E2E] bg-white p-6">
+                <p className="mb-1 text-2xl">🇩🇪</p>
+                <h3 className="mb-2 font-heading text-lg font-bold text-dark">Allemagne</h3>
+                <p className="text-grey-600">Lörrach, Weil am Rhein, Freiburg</p>
+              </div>
+            </div>
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <div className="mt-8 text-center">
+              <Link href="/transport/euroairport-bale-mulhouse" className="inline-flex items-center gap-3 rounded-full border-2 border-primary px-6 py-3 font-semibold text-primary transition-all hover:bg-primary hover:text-white">
+                <Plane className="h-5 w-5" aria-hidden="true" />EuroAirport Basel-Mulhouse-Freiburg <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
           </RevealOnScroll>
         </div>

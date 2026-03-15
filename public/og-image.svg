@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
-  <rect width="1200" height="630" fill="#0B60B0"/>
+  <rect width="1200" height="630" fill="#0057B8"/>
   <rect width="1200" height="630" fill="url(#grad)" opacity="0.3"/>
-  <defs><linearGradient id="grad" x1="0" y1="0" x2="1200" y2="630"><stop stop-color="#084B8A"/><stop offset="1" stop-color="#0B60B0"/></linearGradient></defs>
+  <defs><linearGradient id="grad" x1="0" y1="0" x2="1200" y2="630"><stop stop-color="#003DA5"/><stop offset="1" stop-color="#0057B8"/></linearGradient></defs>
   <!-- Medical cross -->
   <rect x="540" y="160" width="120" height="40" rx="8" fill="white"/>
   <rect x="580" y="120" width="40" height="120" rx="8" fill="white"/>
   <!-- Text -->
   <text x="600" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">3F Ambulance</text>
-  <text x="600" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#E3F2FD">Transport Médical Saint-Louis (68)</text>
-  <text x="600" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#E3F2FD">Trois Frontières — 24h/24, 7j/7</text>
+  <text x="600" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#E8F1FB">Transport Médical Saint-Louis (68)</text>
+  <text x="600" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#E8F1FB">Trois Frontières — 24h/24, 7j/7</text>
   <text x="600" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="white">06 33 81 40 47</text>
   <!-- ECG line -->
   <path d="M0,560 L300,560 L340,560 L360,500 L380,620 L400,520 L420,580 L440,560 L760,560 L800,560 L820,500 L840,620 L860,520 L880,580 L900,560 L1200,560" stroke="white" stroke-width="2" opacity="0.15" fill="none"/>

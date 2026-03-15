@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingCallButton from "@/components/layout/FloatingCallButton";
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+import CookieBanner from "@/components/layout/CookieBanner";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import { EmergencyServiceJsonLd } from "@/components/seo/JsonLd";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -29,6 +31,8 @@ export const metadata: Metadata = {
   description:
     "3F Ambulance : ambulance, VSL et taxi conventionné à Saint-Louis (68). Transport médical dans les Trois Frontières et longue distance. Appelez le 06 33 81 40 47.",
   metadataBase: new URL(SITE_CONFIG.domain),
+  manifest: "/manifest.json",
+  themeColor: "#0057B8",
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -71,6 +75,8 @@ export default function RootLayout({
         <main id="main-content" className="pt-16 md:pt-20">{children}</main>
         <Footer />
         <FloatingCallButton />
+        <FloatingWhatsApp />
+        <CookieBanner />
         <ScrollToTop />
       </body>
     </html>

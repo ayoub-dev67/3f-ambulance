@@ -88,14 +88,11 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
-                  className={`relative pb-1 text-sm font-medium transition-colors hover:text-primary ${
-                    isActive ? "text-primary" : "text-grey-800"
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    isActive ? "text-primary border-b-2 border-primary pb-1" : "text-grey-800 pb-1"
                   }`}
                 >
                   {link.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-primary" />
-                  )}
                 </Link>
               );
             })}
@@ -126,7 +123,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="rounded-lg p-2 text-grey-800 hover:bg-grey-100"
               aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={isOpen ? "true" : "false"}
+              aria-expanded={isOpen}
               aria-controls="mobile-menu"
             >
               <Menu className="h-6 w-6" aria-hidden="true" />

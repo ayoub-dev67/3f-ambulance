@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { cities } from "@/data/cities";
 import { hospitals } from "@/data/hospitals";
+import { blogArticles } from "@/data/blog";
 
 const BASE_URL = "https://3f-ambulance.fr";
 
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/zone-intervention`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${BASE_URL}/faq`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${BASE_URL}/a-propos`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 },
     { url: `${BASE_URL}/mentions-legales`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.1 },
   ];
 
@@ -29,5 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...mainPages, ...cityPages, ...hospitalPages];
+  const blogPages = blogArticles.map((article) => ({
+    url: `${BASE_URL}/blog/${article.slug}`,
+    lastModified: new Date(article.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...mainPages, ...cityPages, ...hospitalPages, ...blogPages];
 }

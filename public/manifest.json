@@ -1,0 +1,16 @@
+{
+  "name": "3F Ambulance — Transport Médical",
+  "short_name": "3F Ambulance",
+  "description": "Ambulance, VSL et taxi conventionné à Saint-Louis (68) — Trois Frontières",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0057B8",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
