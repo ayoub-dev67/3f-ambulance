@@ -88,7 +88,7 @@ export default function Home() {
           <rect x="5" y="35" width="90" height="30" rx="6" />
         </svg>
         <div className="container-custom relative z-30 flex w-full flex-col items-center justify-center py-20 text-center md:py-28">
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">&#x1F691; Transport Médical aux Trois Frontières</span>
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm"><Ambulance className="h-4 w-4" aria-hidden="true" /> Transport Médical aux Trois Frontières</span>
           <h1 className="mx-auto max-w-5xl font-heading text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl">
             Votre Ambulance à<br /><span className="text-blue-200">Saint-Louis</span>
           </h1>
@@ -107,11 +107,11 @@ export default function Home() {
           </div>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {[
-              { emoji: "\u{1F3E5}", label: "Ambulance" },
-              { emoji: "\u{1F690}", label: "VSL" },
-              { emoji: "\u{1F695}", label: "Taxi Conventionné" },
+              { icon: Ambulance, label: "Ambulance" },
+              { icon: Car, label: "VSL" },
+              { icon: CarTaxiFront, label: "Taxi Conventionné" },
             ].map((s) => (
-              <span key={s.label} className="rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm text-white/90 backdrop-blur-sm">{s.emoji} {s.label}</span>
+              <span key={s.label} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm text-white/90 backdrop-blur-sm"><s.icon className="h-4 w-4" aria-hidden="true" />{s.label}</span>
             ))}
           </div>
         </div>

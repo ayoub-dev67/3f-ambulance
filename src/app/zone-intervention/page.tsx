@@ -110,17 +110,17 @@ export default function ZoneInterventionPage() {
           <RevealOnScroll stagger>
             <div className="grid gap-6 md:grid-cols-3">
               <div className="rounded-2xl border border-grey-100 border-t-4 border-t-[#0057B8] bg-white p-6">
-                <p className="mb-1 text-2xl">🇫🇷</p>
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#0057B8]/10 text-[#0057B8]"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
                 <h3 className="mb-2 font-heading text-lg font-bold text-dark">France</h3>
                 <p className="text-grey-600">Saint-Louis et tout le Haut-Rhin</p>
               </div>
               <div className="rounded-2xl border border-grey-100 border-t-4 border-t-accent bg-white p-6">
-                <p className="mb-1 text-2xl">🇨🇭</p>
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
                 <h3 className="mb-2 font-heading text-lg font-bold text-dark">Suisse</h3>
                 <p className="text-grey-600">Bâle, Universitätsspital, cliniques bâloises</p>
               </div>
               <div className="rounded-2xl border border-grey-100 border-t-4 border-t-[#D69E2E] bg-white p-6">
-                <p className="mb-1 text-2xl">🇩🇪</p>
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#D69E2E]/10 text-[#D69E2E]"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
                 <h3 className="mb-2 font-heading text-lg font-bold text-dark">Allemagne</h3>
                 <p className="text-grey-600">Lörrach, Weil am Rhein, Freiburg</p>
               </div>

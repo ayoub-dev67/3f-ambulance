@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, Clock, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Clock, MapPin, MessageCircle, Shield, Heart } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generatePageMetadata } from "@/lib/metadata";
 import ContactForm from "@/components/ui/ContactForm";
@@ -24,14 +24,20 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Urgency banner */}
+      {/* Urgency banner with ECG */}
       <div className="container-custom">
-        <div className="relative z-10 -mt-8 mx-auto max-w-4xl rounded-2xl bg-gradient-to-r from-primary-dark to-primary py-8 px-6 text-center shadow-xl">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-pulse relative">
-            <Phone className="h-7 w-7 text-accent" aria-hidden="true" />
+        <div className="relative z-10 -mt-8 mx-auto max-w-4xl overflow-hidden rounded-2xl bg-gradient-to-r from-primary-dark to-primary py-8 px-6 text-center shadow-xl">
+          {/* ECG motif */}
+          <svg className="absolute inset-0 h-full w-full opacity-[0.06]" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,100 L200,100 L220,100 L240,20 L260,180 L280,60 L300,140 L320,100 L500,100 L520,100 L540,20 L560,180 L580,60 L600,140 L620,100 L800,100 L820,100 L840,20 L860,180 L880,60 L900,140 L920,100 L1200,100" fill="none" stroke="white" strokeWidth="3" />
+          </svg>
+          <div className="relative">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white ring-pulse relative">
+              <Phone className="h-7 w-7 text-accent" aria-hidden="true" />
+            </div>
+            <a href={SITE_CONFIG.phoneHref} className="inline-block font-heading text-4xl font-black text-white transition-opacity hover:opacity-80 md:text-5xl">{SITE_CONFIG.phoneDisplay}</a>
+            <p className="mt-2 text-blue-100">Réponse immédiate — Urgences &amp; Réservations</p>
           </div>
-          <a href={SITE_CONFIG.phoneHref} className="inline-block font-heading text-4xl font-black text-white transition-opacity hover:opacity-80 md:text-5xl">{SITE_CONFIG.phoneDisplay}</a>
-          <p className="mt-2 text-blue-100">Disponible 24h/24, 7j/7 — Urgences &amp; Réservations</p>
         </div>
       </div>
 
@@ -41,7 +47,7 @@ export default function ContactPage() {
           <RevealOnScroll>
             <div className="grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-7">
-                <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-widest text-primary">Formulaire</span>
+                <span className="mb-2 inline-block rounded-full bg-primary-light px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary">Formulaire</span>
                 <h2 className="mb-2 font-heading text-2xl font-bold text-dark md:text-3xl">Demandez un transport</h2>
                 <div className="mb-4 h-1 w-16 rounded-full bg-primary" />
                 <p className="mb-8 text-grey-600 leading-relaxed">Réponse rapide garantie. Pour les urgences, appelez-nous directement.</p>
@@ -52,27 +58,27 @@ export default function ContactPage() {
                 <div className="rounded-2xl bg-[#003DA5] p-8 text-white">
                   <h3 className="mb-6 font-heading text-xl font-semibold">Informations pratiques</h3>
                   <ul className="space-y-6">
-                    <li className="border-b border-white/10 pb-6">
+                    <li className="border-b border-white/20 pb-6">
                       <a href={SITE_CONFIG.phoneHref} className="flex items-start gap-4 group">
-                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-accent"><Phone className="h-5 w-5" aria-hidden="true" /></div>
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-accent"><Phone className="h-5 w-5" aria-hidden="true" /></div>
                         <div>
                           <p className="text-sm text-blue-200">Téléphone</p>
                           <p className="font-heading text-xl font-bold text-white group-hover:text-blue-200 transition-colors">{SITE_CONFIG.phoneDisplay}</p>
                         </div>
                       </a>
                     </li>
-                    <li className="border-b border-white/10 pb-6">
+                    <li className="border-b border-white/20 pb-6">
                       <a href={SITE_CONFIG.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
-                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-green-400"><MessageCircle className="h-5 w-5" aria-hidden="true" /></div>
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-green-400"><MessageCircle className="h-5 w-5" aria-hidden="true" /></div>
                         <div>
                           <p className="text-sm text-blue-200">WhatsApp</p>
                           <p className="font-semibold group-hover:text-blue-200 transition-colors">Écrivez-nous sur WhatsApp</p>
                         </div>
                       </a>
                     </li>
-                    <li className="border-b border-white/10 pb-6">
+                    <li className="border-b border-white/20 pb-6">
                       <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-blue-300"><Clock className="h-5 w-5" aria-hidden="true" /></div>
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-blue-300"><Clock className="h-5 w-5" aria-hidden="true" /></div>
                         <div>
                           <p className="text-sm text-blue-200">Horaires</p>
                           <p className="font-semibold">{SITE_CONFIG.hours}</p>
@@ -81,7 +87,7 @@ export default function ContactPage() {
                     </li>
                     <li>
                       <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-blue-300"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
+                        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-blue-300"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
                         <div>
                           <p className="text-sm text-blue-200">Zone</p>
                           <p className="font-semibold">{SITE_CONFIG.publicLocation}</p>
@@ -89,19 +95,52 @@ export default function ContactPage() {
                       </div>
                     </li>
                   </ul>
-                  {/* Trust logos */}
-                  <div className="mt-8 flex items-center justify-center gap-4 border-t border-white/10 pt-6">
-                    <div className="relative h-8 w-20 opacity-60">
-                      <Image src="/images/logos/assurance-maladie.png" alt="Assurance Maladie" fill className="object-contain" />
-                    </div>
-                    <div className="relative h-8 w-20 opacity-60">
-                      <Image src="/images/logos/carte-vitale.png" alt="Carte Vitale" fill className="object-contain" />
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* Trust logos — separate white section */}
+      <section className="bg-white py-8 border-y border-grey-100">
+        <div className="container-custom">
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <div className="relative h-10 w-28">
+              <Image src="/images/logos/assurance-maladie.png" alt="Assurance Maladie — Conventionné" fill className="object-contain" />
+            </div>
+            <div className="relative h-10 w-28">
+              <Image src="/images/logos/carte-vitale.png" alt="Carte Vitale — Tiers payant" fill className="object-contain" />
+            </div>
+            <div className="relative h-10 w-28">
+              <Image src="/images/logos/etoile-de-vie.png" alt="Étoile de Vie — Ambulanciers diplômés" fill className="object-contain" />
+            </div>
+            <div className="relative h-10 w-28">
+              <Image src="/images/logos/ars-grand-est.png" alt="ARS Grand Est — Agréé" fill className="object-contain" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3 raisons de nous appeler */}
+      <section className="bg-primary-50 py-12">
+        <div className="container-custom max-w-4xl">
+          <h2 className="mb-8 text-center font-heading text-2xl font-bold text-dark">3 raisons de nous appeler</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { icon: Clock, title: "Réponse immédiate", desc: "On décroche 24h/24, 7j/7. Pas de répondeur, pas d\u2019attente — un humain vous répond." },
+              { icon: Shield, title: "Prise en charge CPAM", desc: "On vous explique les démarches, le volet 4, le tiers payant. Pas d\u2019avance de frais dans la plupart des cas." },
+              { icon: Heart, title: "Un vrai accompagnement", desc: "On ne fait pas que conduire. On rassure, on aide, on s\u2019adapte à chaque patient." },
+            ].map((item) => (
+              <div key={item.title} className="rounded-2xl border border-grey-100 bg-white p-6 text-center transition-all hover:shadow-lg">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary-light text-primary">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="mb-2 font-heading text-lg font-semibold text-dark">{item.title}</h3>
+                <p className="text-grey-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
