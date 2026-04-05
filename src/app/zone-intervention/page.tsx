@@ -95,7 +95,7 @@ export default function ZoneInterventionPage() {
               <span className="flex items-center gap-2"><Shield className="h-5 w-5" aria-hidden="true" />Confort garanti</span>
             </div>
             <p className="mx-auto mt-8 max-w-2xl text-lg text-blue-100 leading-relaxed">Notre axe principal : transferts quotidiens vers les HUS — Hautepierre, Nouvel Hôpital Civil, ICANS. Oncologie, neurochirurgie, cardiologie interventionnelle. On fait aussi Colmar (45 min), Belfort (1h15) et toute la France.</p>
-            <a href={SITE_CONFIG.phoneHref} className="relative mt-10 inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-xl font-bold text-white shadow-[0_0_30px_rgba(229,62,62,0.4)] transition-all hover:bg-accent-hover hover:shadow-[0_0_40px_rgba(229,62,62,0.5)] hover:scale-105 ring-pulse" aria-label={`Appeler le ${SITE_CONFIG.phoneDisplay}`}>
+            <a href={SITE_CONFIG.phoneHref} className="mt-10 inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-xl font-bold text-white shadow-lg transition-all hover:bg-accent-hover hover:shadow-xl" aria-label={`Appeler le ${SITE_CONFIG.phoneDisplay}`}>
               <Phone className="h-6 w-6" aria-hidden="true" />Réserver un transport longue distance
             </a>
           </RevealOnScroll>

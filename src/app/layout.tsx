@@ -25,11 +25,11 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "3F Ambulance Saint-Louis (68) | Transport Médical 24h/24",
+    default: "3F Ambulance | Transport Médical Alsace & Trois Frontières",
     template: "%s | 3F Ambulance",
   },
   description:
-    "3F Ambulance : ambulance, VSL et taxi conventionné à Saint-Louis (68). Transport médical dans les Trois Frontières et longue distance. Appelez le 06 33 81 40 47.",
+    "Ambulance, VSL et taxi conventionné en Alsace. Basés à Saint-Louis (68), nous couvrons les Trois Frontières, Mulhouse, Strasbourg et toute la France. 24h/24. Tél : 06 33 81 40 47.",
   metadataBase: new URL(SITE_CONFIG.domain),
   manifest: "/manifest.json",
   themeColor: "#0057B8",

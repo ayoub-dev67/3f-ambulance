@@ -30,7 +30,7 @@ export default function CTABanner({
           <div className="flex-shrink-0">
             <a
               href={SITE_CONFIG.phoneHref}
-              className="relative inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-xl font-bold text-white shadow-[0_0_30px_rgba(229,62,62,0.4)] transition-all hover:bg-accent-hover hover:scale-105 ring-pulse"
+              className="inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-xl font-bold text-white shadow-lg transition-all hover:bg-accent-hover hover:shadow-xl"
               aria-label={`Appeler le ${SITE_CONFIG.phoneDisplay}`}
             >
               <Phone className="h-6 w-6" aria-hidden="true" />

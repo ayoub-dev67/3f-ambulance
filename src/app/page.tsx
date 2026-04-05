@@ -73,15 +73,15 @@ export default function Home() {
           <rect x="5" y="35" width="90" height="30" rx="6" />
         </svg>
         <div className="container-custom relative z-30 flex w-full flex-col items-center justify-center py-20 text-center md:py-28">
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm"><Ambulance className="h-4 w-4" aria-hidden="true" /> Transport Médical aux Trois Frontières</span>
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white"><Ambulance className="h-4 w-4" aria-hidden="true" /> Transport Médical en Alsace</span>
           <h1 className="mx-auto max-w-5xl font-heading text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl">
-            Votre Ambulance à<br /><span className="text-blue-200">Saint-Louis</span>
+            Transport Médical en<br /><span className="text-blue-200">Alsace</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100/80 leading-relaxed md:text-xl">
-            De Saint-Louis à Mulhouse, de l&apos;hôpital GHRMSA à Strasbourg — transport médical professionnel 24h/24, 7j/7.
+            Basés à Saint-Louis (68), nous couvrons les Trois Frontières, Mulhouse, Strasbourg, Bâle — et toute la France en longue distance. 24h/24, 7j/7.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a href={SITE_CONFIG.phoneHref} className="relative inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-lg font-bold text-white shadow-[0_0_40px_rgba(229,62,62,0.3)] transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_0_60px_rgba(229,62,62,0.5)] hover:scale-105 ring-pulse" aria-label={`Appeler le ${SITE_CONFIG.phoneDisplay}`}>
+            <a href={SITE_CONFIG.phoneHref} className="inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:bg-accent-hover hover:shadow-xl" aria-label={`Appeler le ${SITE_CONFIG.phoneDisplay}`}>
               <Phone className="h-6 w-6" aria-hidden="true" />
               Appeler le {SITE_CONFIG.phoneDisplay}
             </a>
@@ -96,7 +96,7 @@ export default function Home() {
               { icon: Car, label: "VSL" },
               { icon: CarTaxiFront, label: "Taxi Conventionné" },
             ].map((s) => (
-              <span key={s.label} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm text-white/90 backdrop-blur-sm"><s.icon className="h-4 w-4" aria-hidden="true" />{s.label}</span>
+              <span key={s.label} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm text-white/90 "><s.icon className="h-4 w-4" aria-hidden="true" />{s.label}</span>
             ))}
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function Home() {
       {/* Services with images */}
       <section className="bg-primary-50 section-padding">
         <div className="container-custom">
-          <RevealOnScroll><SectionHeading title="Nos Services de Transport Médical" surtitre="NOS SERVICES" /></RevealOnScroll>
+          <SectionHeading title="Nos Services de Transport Médical" surtitre="SERVICES" />
           <RevealOnScroll>
             <div className="grid gap-6 md:grid-cols-3">
               {HOME_SERVICES.map((s) => (
@@ -158,7 +158,7 @@ export default function Home() {
       {/* Why us — 2-column asymmetric layout */}
       <section className="bg-white section-padding">
         <div className="container-custom">
-          <RevealOnScroll><SectionHeading title="Pourquoi Choisir 3F Ambulance ?" surtitre="POURQUOI NOUS" /></RevealOnScroll>
+          <SectionHeading title="Pourquoi Choisir 3F Ambulance ?" />
           <RevealOnScroll>
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Left: big feature block */}
@@ -202,7 +202,7 @@ export default function Home() {
       {/* Zone — image cards */}
       <section className="bg-primary-50 section-padding">
         <div className="container-custom">
-          <RevealOnScroll><SectionHeading title="Notre Zone d&apos;Intervention" surtitre="ZONE D'INTERVENTION" /></RevealOnScroll>
+          <SectionHeading title="Notre Zone d&apos;Intervention" surtitre="ZONE" />
           <RevealOnScroll stagger>
             <div className="grid grid-cols-2 gap-4 md:gap-6">
               {[
@@ -216,7 +216,7 @@ export default function Home() {
                     <Image src={v.image} alt={`Vue de ${v.name} — Ambulance 3F Ambulance`} fill className="object-cover transition-transform duration-300 group-hover:scale-105" quality={75} />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
                     <span className="absolute bottom-2 left-3 font-heading text-lg font-bold text-white md:text-xl">{v.name}</span>
-                    <span className="absolute top-2 right-2 rounded-full bg-white/20 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">{v.distance}</span>
+                    <span className="absolute top-2 right-2 rounded-full bg-white/20 px-2.5 py-1 text-xs font-medium text-white ">{v.distance}</span>
                   </div>
                   <div className="p-3 md:p-4">
                     <p className="text-sm text-grey-600">{v.desc}</p>
@@ -237,34 +237,29 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-primary-50 section-padding">
+      <section className="bg-white section-padding">
         <div className="container-custom max-w-4xl">
-          <RevealOnScroll><SectionHeading title="Ce Que Disent Nos Patients" surtitre="TÉMOIGNAGES" /></RevealOnScroll>
-          <RevealOnScroll stagger>
-            <div className="grid gap-6 md:grid-cols-3">
-              {[
-                { name: "Marie Weber", city: "Saint-Louis", stars: 5, text: "Ambulanciers très professionnels et rassurants. Mon mari a été transporté pour sa dialyse 3 fois par semaine pendant 6 mois — toujours à l\u2019heure, toujours avec le sourire. Merci à toute l\u2019équipe." },
-                { name: "Pierre Fischer", city: "Huningue", stars: 5, text: "Transport vers l\u2019Universitätsspital de Bâle pour ma chimio. Ils connaissent parfaitement l\u2019hôpital, m\u2019ont déposé directement devant le bon service. Un vrai soulagement dans un moment difficile." },
-                { name: "Françoise Schmitt", city: "Blotzheim", stars: 5, text: "Suite à mon opération du genou à la Clinique Diaconat, retour à domicile en ambulance. Très doux dans les manipulations, véhicule propre et confortable. Je recommande sans hésiter." },
-              ].map((t) => (
-                <div key={t.name} className="relative rounded-2xl bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg">
-                  <span className="absolute -top-2 left-6 font-serif text-6xl text-primary/10 select-none leading-none" aria-hidden="true">&ldquo;</span>
-                  <div className="relative">
-                    <div className="mb-3 flex gap-0.5">
-                      {Array.from({ length: t.stars }).map((_, i) => (
-                        <svg key={i} className="h-4 w-4 text-[#FBBF24]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                      ))}
-                    </div>
-                    <p className="mb-6 text-grey-800 leading-relaxed italic">&ldquo;{t.text}&rdquo;</p>
-                    <div className="border-t border-grey-100 pt-4">
-                      <p className="font-heading font-semibold text-dark">{t.name}</p>
-                      <p className="text-sm text-grey-600">{t.city}</p>
-                    </div>
-                  </div>
+          <SectionHeading title="Ce Que Disent Nos Patients" surtitre="AVIS" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { name: "Marie Weber", city: "Saint-Louis", stars: 5, text: "Mon mari a été transporté pour sa dialyse 3 fois par semaine pendant 6 mois — toujours à l\u2019heure, toujours avec le sourire. Merci à toute l\u2019équipe." },
+              { name: "Pierre Fischer", city: "Huningue", stars: 5, text: "Transport vers l\u2019Universitätsspital de Bâle pour ma chimio. Ils connaissent parfaitement l\u2019hôpital, m\u2019ont déposé directement devant le bon service." },
+              { name: "Françoise Schmitt", city: "Blotzheim", stars: 5, text: "Retour à domicile en ambulance après mon opération du genou à la Clinique Diaconat. Très doux dans les manipulations, véhicule propre et confortable." },
+            ].map((t) => (
+              <div key={t.name} className="rounded-xl border border-grey-100 bg-white p-6">
+                <div className="mb-3 flex gap-0.5">
+                  {Array.from({ length: t.stars }).map((_, i) => (
+                    <svg key={i} className="h-4 w-4 text-[#FBBF24]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </RevealOnScroll>
+                <p className="mb-4 text-grey-600 leading-relaxed">{t.text}</p>
+                <div className="border-t border-grey-100 pt-3">
+                  <p className="font-heading text-sm font-semibold text-dark">{t.name}</p>
+                  <p className="text-xs text-grey-500">{t.city}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -273,7 +268,7 @@ export default function Home() {
       {/* FAQ */}
       <section className="bg-white section-padding">
         <div className="container-custom max-w-3xl">
-          <RevealOnScroll><SectionHeading title="Questions Fréquentes" surtitre="FAQ" /></RevealOnScroll>
+          <SectionHeading title="Questions Fréquentes" />
           <RevealOnScroll>
             <FAQAccordion items={homeFAQ} />
             <div className="mt-10 text-center">

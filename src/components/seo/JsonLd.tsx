@@ -15,7 +15,12 @@ export function EmergencyServiceJsonLd() {
       addressCountry: "FR",
     },
     areaServed: [
+      { "@type": "AdministrativeArea", name: "Alsace" },
+      { "@type": "AdministrativeArea", name: "Haut-Rhin" },
       { "@type": "City", name: "Saint-Louis" },
+      { "@type": "City", name: "Mulhouse" },
+      { "@type": "City", name: "Strasbourg" },
+      { "@type": "City", name: "Colmar" },
       { "@type": "City", name: "Huningue" },
       { "@type": "City", name: "Hésingue" },
       { "@type": "City", name: "Blotzheim" },
@@ -24,8 +29,10 @@ export function EmergencyServiceJsonLd() {
       { "@type": "City", name: "Kembs" },
       { "@type": "City", name: "Sierentz" },
       { "@type": "City", name: "Rixheim" },
-      { "@type": "City", name: "Mulhouse" },
       { "@type": "City", name: "Habsheim" },
+      { "@type": "City", name: "Bâle" },
+      { "@type": "City", name: "Lörrach" },
+      { "@type": "Country", name: "France" },
     ],
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -114,10 +121,13 @@ export function ServiceJsonLd({ services }: { services: { name: string; descript
       name: SITE_CONFIG.fullName,
       telephone: SITE_CONFIG.phoneHref.replace("tel:", ""),
     },
-    areaServed: {
-      "@type": "City",
-      name: "Saint-Louis",
-    },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Alsace" },
+      { "@type": "City", name: "Saint-Louis" },
+      { "@type": "City", name: "Mulhouse" },
+      { "@type": "City", name: "Strasbourg" },
+      { "@type": "Country", name: "France" },
+    ],
   }));
 
   return (

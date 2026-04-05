@@ -14,8 +14,8 @@ export const SITE_CONFIG = {
     zip: "68440",
     country: "France",
   },
-  publicLocation: "Saint-Louis (68) — Trois Frontières",
-  serviceArea: "Saint-Louis et les Trois Frontières",
+  publicLocation: "Alsace — Trois Frontières (68)",
+  serviceArea: "Alsace, Trois Frontières et toute la France",
   siret: "",
   hours: "24h/24, 7j/7",
   services: [

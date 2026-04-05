@@ -21,22 +21,22 @@ const FLEET = [
 ];
 
 export const metadata = generatePageMetadata({
-  title: "À Propos de 3F Ambulance | Ambulancier Saint-Louis Trois Frontières",
-  description: "Découvrez 3F Ambulance, votre ambulancier de confiance à Saint-Louis (68) aux Trois Frontières. Transport médical professionnel 24h/24. Appelez le 06 33 81 40 47.",
+  title: "À Propos | 3F Ambulance — Ambulancier en Alsace",
+  description: "3F Ambulance, ambulancier de confiance basé à Saint-Louis (68). Transport médical en Alsace, Trois Frontières et longue distance. Équipe diplômée, disponible 24h/24.",
   path: "/a-propos",
 });
 
 export default function AProposPage() {
   return (
     <>
-      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#002B5C] via-[#0057B8] to-[#003DA5] md:min-h-[400px]">
-        <div className="container-custom w-full py-20 text-center md:py-28">
-          <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200 backdrop-blur-sm">Qui sommes-nous</span>
-          <h1 className="mx-auto max-w-4xl font-heading text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
-            Votre Ambulancier de Confiance aux Trois Frontières
+      <section className="bg-white border-b border-grey-100 py-16 md:py-20">
+        <div className="container-custom text-center">
+          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-widest text-primary">Qui sommes-nous</span>
+          <h1 className="mx-auto max-w-4xl font-heading text-3xl font-bold text-dark md:text-4xl lg:text-5xl">
+            Votre Ambulancier de Confiance en Alsace
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl text-blue-100/80 leading-relaxed">
-            Transport médical professionnel à Saint-Louis et dans toute la zone des Trois Frontières.
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-grey-600 leading-relaxed">
+            Basés à Saint-Louis (68), nous assurons le transport médical aux Trois Frontières et dans toute la France.
           </p>
         </div>
       </section>
@@ -78,7 +78,7 @@ export default function AProposPage() {
 
       <section className="bg-white section-padding">
         <div className="container-custom">
-          <RevealOnScroll><SectionHeading title="Nos Valeurs" surtitre="NOS VALEURS" /></RevealOnScroll>
+          <SectionHeading title="Nos Valeurs" />
           <RevealOnScroll stagger>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {[
@@ -101,7 +101,7 @@ export default function AProposPage() {
       {/* Fleet with real images */}
       <section className="bg-primary-50 section-padding">
         <div className="container-custom">
-          <RevealOnScroll><SectionHeading title="Notre Flotte de Véhicules" surtitre="NOS VÉHICULES" /></RevealOnScroll>
+          <SectionHeading title="Notre Flotte de Véhicules" surtitre="VÉHICULES" />
           <RevealOnScroll stagger>
             <div className="grid gap-8 md:grid-cols-3">
               {FLEET.map((v) => (
@@ -120,44 +120,40 @@ export default function AProposPage() {
 
       <section className="bg-white section-padding">
         <div className="container-custom max-w-4xl">
-          <RevealOnScroll><SectionHeading title="Notre Engagement Qualité" surtitre="QUALITÉ" /></RevealOnScroll>
-          <RevealOnScroll stagger>
-            <div className="space-y-5">
-              {[
-                { icon: Award, title: "Ambulanciers Diplômés d'État", desc: "Tous nos ambulanciers sont titulaires du Diplôme d'État d'Ambulancier (DEA) et formés aux gestes de premiers secours." },
-                { icon: Shield, title: "Véhicules aux Normes", desc: "Notre flotte est régulièrement entretenue et contrôlée. Chaque véhicule répond aux normes sanitaires en vigueur." },
-                { icon: CheckCircle, title: "Conventionné CPAM", desc: "Nous sommes conventionnés par la Caisse Primaire d'Assurance Maladie pour la prise en charge de vos transports médicaux." },
-              ].map((item) => (
-                <div key={item.title} className="flex items-start gap-5 rounded-2xl border border-grey-100 bg-white p-8 transition-all duration-300 hover:shadow-lg">
-                  <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-primary-light text-primary"><item.icon className="h-7 w-7" /></div>
-                  <div>
-                    <h3 className="mb-2 font-heading text-xl font-semibold text-dark">{item.title}</h3>
-                    <p className="text-lg text-grey-600 leading-relaxed">{item.desc}</p>
-                  </div>
+          <SectionHeading title="Notre Engagement Qualité" surtitre="QUALITÉ" />
+          <div className="space-y-5">
+            {[
+              { icon: Award, title: "Ambulanciers Diplômés d'État", desc: "Tous nos ambulanciers sont titulaires du Diplôme d'État d'Ambulancier (DEA) et formés aux gestes de premiers secours." },
+              { icon: Shield, title: "Véhicules aux Normes", desc: "Notre flotte est régulièrement entretenue et contrôlée. Chaque véhicule répond aux normes sanitaires en vigueur." },
+              { icon: CheckCircle, title: "Conventionné CPAM", desc: "Nous sommes conventionnés par la Caisse Primaire d'Assurance Maladie pour la prise en charge de vos transports médicaux." },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start gap-5 rounded-xl border border-grey-100 bg-white p-6 transition-all hover:shadow-md">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary"><item.icon className="h-6 w-6" /></div>
+                <div>
+                  <h3 className="mb-1 font-heading text-lg font-semibold text-dark">{item.title}</h3>
+                  <p className="text-grey-600 leading-relaxed">{item.desc}</p>
                 </div>
-              ))}
-            </div>
-          </RevealOnScroll>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Agréments */}
       <section className="bg-primary-50 section-padding">
         <div className="container-custom">
-          <RevealOnScroll><SectionHeading title="Reconnu par les organismes de santé" surtitre="AGRÉMENTS" /></RevealOnScroll>
-          <RevealOnScroll stagger>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
-              {TRUST_LOGOS.map((logo) => (
-                <div key={logo.src} className="flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-sm transition-all hover:shadow-md">
-                  <div className="relative h-16 w-full">
-                    <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
-                  </div>
-                  <p className="mt-4 text-sm font-semibold text-dark">{logo.title}</p>
-                  <p className="mt-1 text-xs text-grey-600">{logo.desc}</p>
+          <SectionHeading title="Reconnu par les organismes de santé" surtitre="AGRÉMENTS" />
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+            {TRUST_LOGOS.map((logo) => (
+              <div key={logo.src} className="flex flex-col items-center rounded-xl bg-white p-6 text-center border border-grey-100">
+                <div className="relative h-14 w-full">
+                  <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
                 </div>
-              ))}
-            </div>
-          </RevealOnScroll>
+                <p className="mt-3 text-sm font-semibold text-dark">{logo.title}</p>
+                <p className="mt-1 text-xs text-grey-500">{logo.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

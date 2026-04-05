@@ -9,7 +9,7 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 
 export const metadata = generatePageMetadata({
   title: "Blog — Conseils Transport Médical | 3F Ambulance",
-  description: "Conseils et informations sur le transport médical : remboursement, ambulance, VSL, taxi conventionné, dialyse. Blog 3F Ambulance Saint-Louis.",
+  description: "Conseils et informations sur le transport médical : remboursement CPAM, ambulance, VSL, taxi conventionné, dialyse. Blog 3F Ambulance Alsace.",
   path: "/blog",
 });
 

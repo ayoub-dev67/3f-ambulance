@@ -31,7 +31,7 @@ export function generatePageMetadata({
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "3F Ambulance - Transport Médical Saint-Louis",
+          alt: "3F Ambulance — Transport Médical Alsace & Trois Frontières",
         },
       ],
     },

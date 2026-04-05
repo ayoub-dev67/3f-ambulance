@@ -7,19 +7,19 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { FAQJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
-  title: "FAQ Transport Ambulance Saint-Louis (68) | 3F Ambulance",
-  description: "Retrouvez les réponses à vos questions sur le transport médical à Saint-Louis (68). Ambulance, VSL, taxi conventionné, prise en charge CPAM. 3F Ambulance — 06 33 81 40 47.",
+  title: "FAQ Transport Médical | 3F Ambulance Alsace",
+  description: "Réponses à vos questions sur le transport médical : remboursement CPAM, prescription, ambulance vs VSL, zone d'intervention en Alsace. 3F Ambulance — 06 33 81 40 47.",
   path: "/faq",
 });
 
 export default function FAQPage() {
   return (
     <>
-      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#002B5C] via-[#0057B8] to-[#003DA5] md:min-h-[400px]">
-        <div className="container-custom w-full py-20 text-center md:py-28">
-          <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200 backdrop-blur-sm">FAQ</span>
-          <h1 className="mx-auto max-w-4xl font-heading text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">Questions Fréquentes</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl text-blue-100/80 leading-relaxed">Retrouvez les réponses aux questions les plus courantes sur nos services de transport médical.</p>
+      <section className="bg-primary-50 border-b border-grey-100 py-16 md:py-20">
+        <div className="container-custom text-center">
+          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-widest text-primary">FAQ</span>
+          <h1 className="font-heading text-3xl font-bold text-dark md:text-4xl lg:text-5xl">Questions Fréquentes</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-grey-600 leading-relaxed">Tout ce qu&apos;il faut savoir sur le transport médical, le remboursement et nos services.</p>
         </div>
       </section>
 

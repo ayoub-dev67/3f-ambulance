@@ -19,7 +19,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "Intervenez-vous 24h/24 ?",
-    answer: "Oui. Urgences à 3h du matin, dialyse à 5h30, retour d'hospitalisation à 22h — nous répondons à toute heure, 7 jours sur 7, week-ends et jours fériés inclus. Appelez le 06 33 81 40 47 à n'importe quel moment.",
+    answer: "Oui, nous sommes disponibles 24 heures sur 24, 7 jours sur 7, y compris les week-ends et jours fériés. Urgences à 3h du matin, départ en dialyse à 5h30, retour d'hospitalisation à 22h — peu importe l'heure, un ambulancier vous répond. Pas de répondeur, pas d'attente : une personne décroche et organise votre transport immédiatement. Appelez le 06 33 81 40 47 à n'importe quel moment.",
   },
   {
     question: "Qu'est-ce qu'une prescription médicale de transport ?",
@@ -27,7 +27,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "Faites-vous des transports vers la Suisse ou l'Allemagne ?",
-    answer: "Oui, c'est même l'une de nos spécialités. Nous transportons régulièrement des patients vers l'Universitätsspital de Bâle (à 15 min de Saint-Louis), les hôpitaux de Lörrach et le Universitätsklinikum de Freiburg. Nous connaissons les procédures de transport médical transfrontalier et nous nous occupons de la coordination avec les établissements étrangers. Nous intervenons aussi à <a href=\"/transport/euroairport-bale-mulhouse\">l'EuroAirport</a> pour les rapatriements sanitaires.",
+    answer: "Oui, le transport transfrontalier est l'une de nos spécialités — c'est l'avantage d'être basés aux Trois Frontières. Nous transportons régulièrement des patients vers l'Universitätsspital de Bâle (à 15 min de Saint-Louis), le St. Elisabethen-Krankenhaus de Lörrach (10 min) et le Universitätsklinikum de Freiburg (45 min). Nous connaissons les procédures d'accès de chaque établissement, les parkings ambulance, les services et les accueils. Pour la coordination administrative avec les hôpitaux étrangers, on s'en occupe. Nous intervenons aussi à <a href=\"/transport/euroairport-bale-mulhouse\">l'EuroAirport Bâle-Mulhouse</a> pour les rapatriements sanitaires et les transferts de passagers nécessitant une assistance médicale.",
   },
   {
     question: "Comment se déroule un transport en ambulance ?",
@@ -39,6 +39,6 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: "Assurez-vous des transports longue distance ?",
-    answer: "Oui, nous effectuons des transports longue distance tous les jours. Notre axe principal est le corridor Saint-Louis ↔ Strasbourg (environ 1h30 de route) pour les consultations aux <a href=\"/transport/hopital-strasbourg\">Hôpitaux Universitaires de Strasbourg</a> : Hautepierre, Nouvel Hôpital Civil, ICANS (cancérologie). Nous assurons aussi des transferts vers Colmar, Belfort, Besançon et toute destination en France. Nos véhicules sont équipés pour garantir votre confort sur les longs trajets.",
+    answer: "Oui, la longue distance fait partie de notre activité quotidienne. Notre axe principal est le corridor Saint-Louis ↔ Strasbourg (environ 1h30 de route, autoroute A35) pour les consultations aux <a href=\"/transport/hopital-strasbourg\">Hôpitaux Universitaires de Strasbourg</a> : Hautepierre, Nouvel Hôpital Civil, ICANS (cancérologie). Nous assurons également des transferts vers Colmar (45 min), Belfort (1h15), Besançon et toute destination en France métropolitaine. Pour les aller-retours dans la journée, on peut attendre sur place ou revenir vous chercher à la fin de votre consultation. Nos véhicules (ambulance et VSL) sont équipés pour garantir votre confort même sur les trajets de plusieurs heures. Un transport longue distance est remboursé comme les autres, à condition d'avoir la prescription médicale (volet 4 du cerfa).",
   },
 ];

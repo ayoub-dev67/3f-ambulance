@@ -128,7 +128,7 @@ export default function Footer() {
           <div className="mt-12 border-t border-white/10 pt-6 pb-4">
             <div className="flex flex-wrap items-center justify-center gap-8">
               {FOOTER_LOGOS.map((logo) => (
-                <div key={logo.src} className="relative h-6 w-16 opacity-30 grayscale">
+                <div key={logo.src} className="relative h-8 w-20 opacity-60 brightness-200">
                   <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
                 </div>
               ))}

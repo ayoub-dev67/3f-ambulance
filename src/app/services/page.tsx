@@ -8,8 +8,8 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { ServiceJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata = generatePageMetadata({
-  title: "Services Transport Médical | 3F Ambulance Saint-Louis",
-  description: "Découvrez nos services de transport médical à Saint-Louis (68) : ambulance, VSL, taxi conventionné, longue distance et transfrontalier. 3F Ambulance — 06 33 81 40 47.",
+  title: "Ambulance, VSL, Taxi Conventionné | Services 3F Ambulance",
+  description: "Nos services de transport médical en Alsace : ambulance, VSL, taxi conventionné CPAM, longue distance et transfrontalier. Basés à Saint-Louis (68). Tél : 06 33 81 40 47.",
   path: "/services",
 });
 
@@ -83,13 +83,13 @@ function ServiceSection({ id, icon, title, description, situations, image, image
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative flex min-h-[500px] items-center bg-gradient-to-br from-[#002B5C] via-[#0057B8] to-[#003DA5] md:min-h-[400px]">
-        <div className="container-custom w-full py-20 text-center md:py-28">
-          <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200 backdrop-blur-sm">Nos services</span>
-          <h1 className="mx-auto max-w-4xl font-heading text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
+      <section className="bg-primary-50 border-b border-grey-100 py-16 md:py-20">
+        <div className="container-custom text-center">
+          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-widest text-primary">Nos services</span>
+          <h1 className="mx-auto max-w-4xl font-heading text-3xl font-bold text-dark md:text-4xl lg:text-5xl">
             Nos Services de Transport Médical
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl text-blue-100/80 leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-grey-600 leading-relaxed">
             Ambulance, VSL, taxi conventionné, longue distance et transfrontalier — une solution pour chaque besoin médical.
           </p>
         </div>
