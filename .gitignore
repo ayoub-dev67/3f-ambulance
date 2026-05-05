@@ -32,8 +32,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# script outputs (keyword research CSVs, logs)
+/scripts/output/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
 .vercel
+
+# script outputs (keyword research CSVs, logs)
+/scripts/output/
